@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>Responsibilities of a DevOps Engineer - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "Responsibilities of a DevOps Engineer", url: "#_top", children: [
+				]},
+				{title: "DevOps is the link between the two", url: "#devops-is-the-link-between-the-two", children: [
+				]},
+				{title: "Jack of all trades, Master of none", url: "#jack-of-all-trades-master-of-none", children: [
+				]},
+				{title: "High Level Overview", url: "#high-level-overview", children: [
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../../00/day01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../../00/day01/" class="btn btn-sm btn-link">
+			#DevOpsTraineeProgram - Introduction - Day 1
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day01-02/" class="btn btn-sm btn-link">
+			#DevOpsTraineeProgram - Application Focused - Day 3
+		</a>
+		<a href="../day01-02/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			
+
+			<h2 id="responsibilities-of-a-devops-engineer">Responsibilities of a DevOps Engineer</h2>
+<p>It was briefly touched on in the first post but now we must get deeper into this concept and understand that there are two main parts when creating an application. We have the <strong>Development</strong> part where software developers program the application and test it. Then we have the <strong>Operations</strong> part where the application is deployed and maintained on a server. </p>
+<h2 id="devops-is-the-link-between-the-two">DevOps is the link between the two</h2>
+<p>To get to grips with DevOps or the tasks in which a DevOps engineer would be carrying out we need to understand the tools or the process and overview of those and how they come together. </p>
+<p>Everything starts with the application! You will see so much throughout that it is all about the application when it comes to DevOps.</p>
+<p>Developers will create an application, this can be done with many different technology stacks and lets leave that to the imagination for now as we get into this later. This can also involve many different programming languages, build tools, code repository etc. </p>
+<p>As a DevOps engineer you won't be programming the application but having a good understanding of the concepts of how a developer works and the systems, tools and processes they are using is key to success. </p>
+<p>At a very high level you are going to need to know how the application is configured to talk to all of its required services or data services and then also sprinkle a requirement of how this can or should be tested. </p>
+<p>The application will need to be deployed somewhere, lets keep it generally simple here and make this a server, doesn't matter where but a server. This is then expected to be accessed by the customer or end user depending on the application that has been created. </p>
+<p>This server needs to run somewhere, on-premises, in a public cloud, serverless. Someone needs to create and configure these servers and get them ready for the application to run. Now this element might land to you as a DevOps engineer to deploy and configure these servers. </p>
+<p>These servers will have to run an Operating System and generally speaking this is going to be Linux but we have a whole section or week where we cover some of the foundational knowledge you should gain here. </p>
+<p>It is also likely that we need to communicate with other services in our network or environment, so we also need to have that level of knowledge around networking and configuring that, this might to some degree also land at the feet of the DevOps engineer. Again we will cover this in more detail in a dedicated section talking all things DNS, DHCP, Load Balancing etc. </p>
+<h2 id="jack-of-all-trades-master-of-none">Jack of all trades, Master of none</h2>
+<p>I will say at this point though, you don't need to be a Network or Infrastructure specialist you need a foundational knowledge of how to get things up and running and talking to each other, much the same as maybe having a foundational knowledge of a programming language but you don't need to be a developer. However you might be coming into this as a specialist in an area and that is a great footing to adapt to other areas. </p>
+<p>You will also most likely not take over the management of these servers or the application on a daily basis. </p>
+<p>We have been talking about servers but the likelihood is that your application will be developed to run as containers, Which still runs on a server for the most part but you will also need an understanding of not only virtualisation, Cloud Infrastructure as a Service (IaaS) but also containerization as well, this program will be focused and be catered towards containers. </p>
+<h2 id="high-level-overview">High Level Overview</h2>
+<p>On one side we have our developers creating new features and functionality (as well as bug fixes) for the application. </p>
+<p>On the other side we have some sort of environment, infrastructure or servers which are configured and managed to run this application and communicate with all its required services. </p>
+<p>The big question is how do we get those features and bug fixes into our production and make it available to those end users? </p>
+<p>How do we release the new application version? This is one of the main tasks for a DevOps engineer, and the important thing here is not to just figure out how to do this once but we need to do this continuously and in an automated, efficient way which also needs to include testing! </p>
+<p>This is where we are going to end this day of learning, hopefully this was useful. Over the next few days we are going to dive a little deeper into some more areas of DevOps and then we will get into the sections that dive deeper into the tooling and processes and the benefits of these. </p>
+<h2 id="resources">Resources</h2>
+<p>My advice is to watch all of the videos below and take notes on your own textbook or agenda. Going forward, try to keep pen and paper on your side, it will help you whenever you want to go back to your notes in the near future!</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=0yWAtQ6wYNM">What is DevOps? - TechWorld with Nana</a></li>
+<li><a href="https://www.youtube.com/watch?v=kBV8gPVZNEE">What is DevOps? - GitHub YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=UbtB4sMaaNM">What is DevOps? - IBM YouTube</a></li>
+<li><a href="https://aws.amazon.com/devops/what-is-devops/">What is DevOps? - AWS </a></li>
+<li><a href="https://docs.microsoft.com/en-us/devops/what-is-devops">What is DevOps? - Microsoft</a></li>
+</ul>
+<p>See you on the <a href="week01-02.md">Next Section</a>.  </p>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../../00/day01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../../00/day01/" class="btn btn-sm btn-link">
+			#DevOpsTraineeProgram - Introduction - Day 1
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day01-02/" class="btn btn-sm btn-link">
+			#DevOpsTraineeProgram - Application Focused - Day 3
+		</a>
+		<a href="../day01-02/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-04-15 08:05:56 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>

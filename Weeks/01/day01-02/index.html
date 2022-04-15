@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>#DevOpsTraineeProgram - Application Focused - Day 3 - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "DevOps Lifecycle - Application Focused", url: "#_top", children: [
+						
+				{title: "Development", url: "#_top", children: [
+				]},
+				{title: "Testing", url: "#testing", children: [
+				]},
+				{title: "Integration", url: "#integration", children: [
+				]},
+				{title: "Deployment", url: "#deployment", children: [
+				]},
+				{title: "Monitoring", url: "#monitoring", children: [
+				]},
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day01-01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day01-01/" class="btn btn-sm btn-link">
+			Responsibilities of a DevOps Engineer
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day01-03/" class="btn btn-sm btn-link">
+			#DevOpsTraineeProgram - DevOps & Agile - Day 4
+		</a>
+		<a href="../day01-03/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			
+
+			<h2 id="devops-lifecycle-application-focused">DevOps Lifecycle - Application Focused</h2>
+<p>As we continue through these next few weeks we are 100% going to come across these titles (Continuous Development, Testing, Deployment, Monitor) over and over again, If you are heading towards the DevOps Engineer role then repeatability will be something you will get used to but constantly enhancing each time is another thing that keeps things interesting. </p>
+<p>In this hour we are going to take a look at the high level view of the application from start to finish and then back round again like a constant loop. </p>
+<h3 id="development">Development</h3>
+<p>Let's take a brand new example of an Application, to start with we have nothing created, maybe as a developer you have to discuss with your client or end user on the requirements and come up with some sort of plan or requirements for your Application. We then need to create from the requirements our brand new application. </p>
+<p>In regards to tooling at this stage there is no real requirement here other than choosing your IDE and the programming language you wish to use to write your application. </p>
+<p>As a DevOps engineer, remember you are probably not the one creating this plan or coding the application for the end user, this will be a skilled developer. </p>
+<p>But it also would not hurt for you to be able to read some of the code so that you can make the best infrastructure decisions moving forward for your application.</p>
+<p>We previously mentioned that this application can be written in any language. Importantly this should be maintained using a version control system, this is something we will cover also in detail later on and in particular we will dive into <strong>Git</strong>. </p>
+<p>It is also likely that it will not be one developer working on this project although this could be the case but even so best practices would require a code repository to store and collaborate on the code, this could be private or public and could be hosted or privately deployed generally speaking you would hear the likes of <strong>GitHub or GitLab</strong> being used as a code repository. Again we will cover these as part of our section on <strong>Git</strong> later on. </p>
+<h3 id="testing">Testing</h3>
+<p>At this stage we have our requirements and we have our application being developed. But we need to make sure we are testing our code in all the various different environments that we have available to us or specifically maybe to the programming language chosen. </p>
+<p>This phase enables QA to test for bugs, more frequently we see containers being used for simulating the test environment which overall can improve on cost overheads of physical or cloud infrastructure. </p>
+<p>This phase is also likely going to be automated as part of the next area which is Continuous Integration.</p>
+<p>The ability to automate this testing vs 10s,100s or even 1000s of QA engineers having to do this manually speaks for itself, these engineers can focus on something else within the stack to ensure you are moving faster and developing more functionality vs testing bugs and software which tends to be the hold up on most traditional software releases that use a waterfall methodology. </p>
+<h3 id="integration">Integration</h3>
+<p>Quite importantly Integration is at the middle of the DevOps lifecycle. It is the practice of in which developers require to commit changes to the source code more frequently. This could be on a daily or weekly basis. </p>
+<p>With every commit your application can go through the automated testing phases and this allows for early detection of issues or bugs before the next phase. </p>
+<p>Now you might at this stage be saying "but we don't create applications, we buy it off the shelf from a software vendor" Don't worry many companies do this and will continue to do this and it will be the software vendor that is concentrating on the above 3 phases but you might want to still adopt the final phase as this will enable for faster and more efficient deployments of your off the shelf deployments. </p>
+<p>I would also suggest just having this above knowledge is very important as you might buy off the shelf software today, but what about tomorrow or down the line... next job maybe? </p>
+<h3 id="deployment">Deployment</h3>
+<p>Ok so we have our application built and tested against the requirements of our end user and we now need to go ahead and deploy this application into production for our end users to consume. </p>
+<p>This is the stage where the code is deployed to the production servers, now this is where things get extremely interesting and it is where the rest of our 86 days dives deeper into these areas. Because different applications require different possibly hardware or configurations. This is where <strong>Application Configuration Management</strong> and <strong>Infrastructure as Code</strong> could play a key part in your DevOps lifecycle. It might be that your application is <strong>Containerised</strong> but also available to run on a virtual machine. Which then also leads us onto platforms like <strong>Kubernetes</strong> which would be orchestrating those containers and making sure you have the desired state available to your end users. </p>
+<p>All of these bold topics we will go into more detail over the next few weeks to get a better foundational knowledge of what they are and when to use them. </p>
+<h3 id="monitoring">Monitoring</h3>
+<p>Things are moving fast here and we have our Application that we are continuously updating with new features and functionality and we have our testing making sure no gremlins are being found. We have the application running in our environment that can be continually keeping the required configuration and performance. </p>
+<p>But now we need to be sure that our end users are getting the experience they require. Here we need to make sure that our Application Performance is continuously being monitored, this phase is going to allow your developers to make better decisions about enhancements to the application in future releases to better serve the end users. </p>
+<p>This section is also where we are going to capture that feedback wheel about the features that have been implemented and how the end users would like to make these better for them. </p>
+<p>Reliability is a key factor here as well, at the end of the day we want our Application to be available all the time it is required. This then lends to other <strong>observability, security and data management</strong> areas that should be continuously monitored and feedback can always be used to better enhance, update and release the application continuously. </p>
+<p>Some input from the community here specifically <a href="https://twitter.com/_ediri">@_ediri</a> mentioned also part of this continous process we should also have the FinOps teams involved. Apps &amp; Data are running and stored somewhere you should be monitoring this continously to make sure if things change from a resources point of view your costs are not causing some major financial pain on your Cloud Bills.</p>
+<p>I think it is also a good time to bring up the "DevOps Engineer" mentions above, albeit there are many DevOps Engineer positions in the wild that people hold, this is not really the ideal way of positioning the process of DevOps. What I mean is from speaking to others in the community the title of DevOps Engineer should not be the goal for anyone because really any position should be adopting DevOps processes and the culture explained here. DevOps should be used in many different positions such as Cloud-Native engineer/architect, virtualisation admin, cloud architect/engineer, infrastructure admin. This is to name a few but the reason for using DevOps Engineer above was really to highlight the scope or the process used by any of the above positions and more. </p>
+<h2 id="resources">Resources</h2>
+<p>My advice is to watch all of the videos below and take notes on your own textbook or agenda. Going forward, try to keep pen and paper on your side, it will help you whenever you want to go back to your notes in the near future!</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=scEDHsr3APg">CI/CD Explained in 100 Seconds - FireShip YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=UnjwVYAN7Ns">Continuous Development</a> I will also add that this is focused on manufacturing but the lean culture can be closely followed with DevOps. </li>
+<li><a href="https://www.youtube.com/watch?v=RYQbmjLgubM">Continuous Testing - IBM YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=1er2cjUq1UI">Continuous Integration - IBM YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=Zu53QQuYqJ0">Continuous Monitoring</a></li>
+<li><a href="https://www.notion.so/The-Remote-Flow-d90982e77a144f4f990c135f115f41c6">The Remote Flow</a></li>
+<li><a href="https://www.youtube.com/watch?v=6eRkCnFhHRg">Que es CI/CD - PeladoNerd</a></li>
+</ul>
+<p>See you on the <a href="week01-03.md">Next Section</a>.  </p>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day01-01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day01-01/" class="btn btn-sm btn-link">
+			Responsibilities of a DevOps Engineer
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day01-03/" class="btn btn-sm btn-link">
+			#DevOpsTraineeProgram - DevOps & Agile - Day 4
+		</a>
+		<a href="../day01-03/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-04-15 08:05:56 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>
