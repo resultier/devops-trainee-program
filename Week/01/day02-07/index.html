@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>7. Tweet your progress with our new App - Day 13 - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "Tweet your progress with our new App", url: "#_top", children: [
+				]},
+				{title: "Adding the ability to tweet your progress", url: "#adding-the-ability-to-tweet-your-progress", children: [
+						
+				{title: "Note:", url: "#_top", children: [
+				]},
+				]},
+				{title: "Go Twitter Bot", url: "#go-twitter-bot", children: [
+				]},
+				{title: "Pairing the two together - Go-Twitter-Bot + Our App", url: "#pairing-the-two-together-go-twitter-bot-our-app", children: [
+						
+				{title: "Note", url: "#_top", children: [
+				]},
+				]},
+				{title: "How to compile for multiple OSs", url: "#how-to-compile-for-multiple-oss", children: [
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day02-06/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day02-06/" class="btn btn-sm btn-link">
+			6. Getting user input with Pointers and a finished program
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			
+
+			<h2 id="tweet-your-progress-with-our-new-app">Tweet your progress with our new App</h2>
+<p>As we are nearing to our last section, we must highlight that we have only just touched the surface here and it is just the start that might get you hooked or interested and excited. Maybe it is your beginning to wanting to dive more into Go. </p>
+<p>So far, we have taken a small idea for an application and we have added functionality to it. In this session we want to take advantage of those packages we mentioned earlier and create the functionality for our app to not only give you the update of your progress on screen but also send a tweet with the details of the challenge and your status. </p>
+<h2 id="adding-the-ability-to-tweet-your-progress">Adding the ability to tweet your progress</h2>
+<p>The first thing we need to do is set up our developer API access with Twitter for this to work. </p>
+<p>Head to the <a href="https://developer.twitter.com">Twitter Developer Platform</a> and sign in with your Twitter handle and details and make sure to sign up for your access for twitter developer dashboard. Once in you should see something like the below. Make sure to use the name dpt-yourname as your app name.</p>
+<p><img alt="" src="../../../Images/day02-07-01.png" /></p>
+<p>From here you may also want to request elevated access, this might take some time but generally it shouldn't take too much.</p>
+<p>Next, we should select Projects &amp; Apps and create our App. Limits are depending on the account access you have, with essential you only have one app and one project which is enough however with elevated you can have a total of 3 apps. For now, one app is enough for this case scenario. </p>
+<h4 id="note">Note:</h4>
+<p>You will be then given API tokens, it is important that you save these somewhere secure. (I have since deleted this app) We will need these later with our Go Application. </p>
+<p>Now that we have our app created, make sure that they're unique to you.
+<img alt="" src="../../../Images/day02-07-02.png" /></p>
+<p>The keys that we gathered before are known as our consumer keys and we will also need our access token and secrets. We can gather this information using the "Keys &amp; Tokens" tab. </p>
+<p><img alt="" src="../../../Images/day02-07-03.png" /></p>
+<p>Okay, we are done in the Twitter developer portal for now. Make sure you keep your keys safe because we will need them later. </p>
+<h2 id="go-twitter-bot">Go Twitter Bot</h2>
+<p>Remember the code we are starting within our application as well:</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+
+    const DaysTotal int = 60
+    var remainingDays uint = 60
+    challenge := &quot;#DevOpsTraineeProgram&quot;
+
+    fmt.Printf(&quot;Welcome to the %v challenge.\nThis challenge consists of %v days\n&quot;, challenge, DaysTotal)
+
+    var TwitterName string
+    var DaysCompleted uint
+
+    // asking for user input
+    fmt.Println(&quot;Enter Your Twitter Handle: &quot;)
+    fmt.Scanln(&amp;TwitterName)
+
+    fmt.Println(&quot;How many days have you completed?: &quot;)
+    fmt.Scanln(&amp;DaysCompleted)
+
+    // calculate remaining days
+    remainingDays = remainingDays - DaysCompleted
+
+    fmt.Printf(&quot;Thank you %v for taking part and completing %v days.\n&quot;, TwitterName, DaysCompleted)
+    fmt.Printf(&quot;You have %v days remaining for the %v challenge\n&quot;, remainingDays, challenge)
+    fmt.Println(&quot;Good luck&quot;)
+}
+</code></pre>
+<p>but first, we need to check we have the correct code to make something tweet.</p>
+<p>We need to think about the code to get our output or message to Twitter in the form of a tweet. We are going to be using <a href="https://github.com/dghubble/go-twitter">go-twitter</a> This is a Go client library for the Twitter API. </p>
+<p>To test this before putting this into our main application, we have created a new directory in our <code>src</code> folder called go-twitter-bot, issued the <code>go mod init github.com/michaelcade/go-twitter-bot</code> on the folder which then created a <code>go.mod</code> file and then we can start writing our new main.go and test this out. </p>
+<p>Additionally we will need to add the following packages:</p>
+<pre><code class="language-go">go get package github.com/dghubble/go-twitter/twitter 
+go get package github.com/dghubble/oauth1
+</code></pre>
+<p>We now need those keys, tokens and secrets we gathered from the Twitter developer portal. We are going to set these in our environment variables. This will depend on the OS you are running: </p>
+<p>Windows</p>
+<pre><code>set CONSUMER_KEY
+set CONSUMER_SECRET
+set ACCESS_TOKEN
+set ACCESS_TOKEN_SECRET
+</code></pre>
+<p>Linux / macOS</p>
+<pre><code>export CONSUMER_KEY
+export CONSUMER_SECRET
+export ACCESS_TOKEN
+export ACCESS_TOKEN_SECRET
+</code></pre>
+<p>At this stage, you can take a look at the following <a href="https://pastebin.com/3E3SWvpe">code</a> but you will see here that we are using a struct to define our keys, secrets and tokens.</p>
+<p>We then have a <code>func</code> to parse those credentials and make that connection to the Twitter API </p>
+<p>Then based on the success we will then send a tweet. </p>
+<pre><code class="language-go">package main
+
+import (
+    // other imports
+    &quot;fmt&quot;
+    &quot;log&quot;
+    &quot;os&quot;
+
+    &quot;github.com/dghubble/go-twitter/twitter&quot;
+    &quot;github.com/dghubble/oauth1&quot;
+)
+
+// Credentials stores all of our access/consumer tokens
+// and secret keys needed for authentication against
+// the twitter REST API.
+type Credentials struct {
+    ConsumerKey       string
+    ConsumerSecret    string
+    AccessToken       string
+    AccessTokenSecret string
+}
+
+// getClient is a helper function that will return a twitter client
+// that we can subsequently use to send tweets, or to stream new tweets
+// this will take in a pointer to a Credential struct which will contain
+// everything needed to authenticate and return a pointer to a twitter Client
+// or an error
+func getClient(creds *Credentials) (*twitter.Client, error) {
+    // Pass in your consumer key (API Key) and your Consumer Secret (API Secret)
+    config := oauth1.NewConfig(creds.ConsumerKey, creds.ConsumerSecret)
+    // Pass in your Access Token and your Access Token Secret
+    token := oauth1.NewToken(creds.AccessToken, creds.AccessTokenSecret)
+
+    httpClient := config.Client(oauth1.NoContext, token)
+    client := twitter.NewClient(httpClient)
+
+    // Verify Credentials
+    verifyParams := &amp;twitter.AccountVerifyParams{
+        SkipStatus:   twitter.Bool(true),
+        IncludeEmail: twitter.Bool(true),
+    }
+
+    // we can retrieve the user and verify if the credentials
+    // we have used successfully allow us to log in!
+    user, _, err := client.Accounts.VerifyCredentials(verifyParams)
+    if err != nil {
+        return nil, err
+    }
+
+    log.Printf(&quot;User's ACCOUNT:\n%+v\n&quot;, user)
+    return client, nil
+}
+func main() {
+    fmt.Println(&quot;Go-Twitter Bot v0.01&quot;)
+    creds := Credentials{
+        AccessToken:       os.Getenv(&quot;ACCESS_TOKEN&quot;),
+        AccessTokenSecret: os.Getenv(&quot;ACCESS_TOKEN_SECRET&quot;),
+        ConsumerKey:       os.Getenv(&quot;CONSUMER_KEY&quot;),`
+        ConsumerSecret:    os.Getenv(&quot;CONSUMER_SECRET&quot;),
+    }
+
+    client, err := getClient(&amp;creds)
+    if err != nil {
+        log.Println(&quot;Error getting Twitter Client&quot;)
+        log.Println(err)
+    }
+
+    tweet, resp, err := client.Statuses.Update(&quot;A Test Tweet from the future, testing a #DevOpsTraineeProgram Program that tweets, tweet tweet&quot;, nil)
+    if err != nil {
+        log.Println(err)
+    }
+    log.Printf(&quot;%+v\n&quot;, resp)
+    log.Printf(&quot;%+v\n&quot;, tweet)
+}
+
+</code></pre>
+<p>The above will either give you an error based on what is happening or it will succeed and you will have a tweet sent with the message outlined in the code. </p>
+<h2 id="pairing-the-two-together-go-twitter-bot-our-app">Pairing the two together - Go-Twitter-Bot + Our App</h2>
+<p>Now we need to merge these two in our <code>main.go</code>. We can definitely improve this in the future as we build our <code>.go</code> files in our project but for now this will make sense.</p>
+<p>You can see the merged codebase <a href="https://pastebin.com/vti4hjuD">here</a> but I will also show it below. </p>
+<pre><code class="language-go">package main
+
+import (
+    // other imports
+    &quot;fmt&quot;
+    &quot;log&quot;
+    &quot;os&quot;
+
+    &quot;github.com/dghubble/go-twitter/twitter&quot;
+    &quot;github.com/dghubble/oauth1&quot;
+)
+
+// Credentials stores all of our access/consumer tokens
+// and secret keys needed for authentication against
+// the twitter REST API.
+type Credentials struct {
+    ConsumerKey       string
+    ConsumerSecret    string
+    AccessToken       string
+    AccessTokenSecret string
+}
+
+// getClient is a helper function that will return a twitter client
+// that we can subsequently use to send tweets, or to stream new tweets
+// this will take in a pointer to a Credential struct which will contain
+// everything needed to authenticate and return a pointer to a twitter Client
+// or an error
+func getClient(creds *Credentials) (*twitter.Client, error) {
+    // Pass in your consumer key (API Key) and your Consumer Secret (API Secret)
+    config := oauth1.NewConfig(creds.ConsumerKey, creds.ConsumerSecret)
+    // Pass in your Access Token and your Access Token Secret
+    token := oauth1.NewToken(creds.AccessToken, creds.AccessTokenSecret)
+
+    httpClient := config.Client(oauth1.NoContext, token)
+    client := twitter.NewClient(httpClient)
+
+    // Verify Credentials
+    verifyParams := &amp;twitter.AccountVerifyParams{
+        SkipStatus:   twitter.Bool(true),
+        IncludeEmail: twitter.Bool(true),
+    }
+
+    // we can retrieve the user and verify if the credentials
+    // we have used successfully allow us to log in!
+    user, _, err := client.Accounts.VerifyCredentials(verifyParams)
+    if err != nil {
+        return nil, err
+    }
+
+    log.Printf(&quot;User's ACCOUNT:\n%+v\n&quot;, user)
+    return client, nil
+}
+func main() {
+    creds := Credentials{
+        AccessToken:       os.Getenv(&quot;ACCESS_TOKEN&quot;),
+        AccessTokenSecret: os.Getenv(&quot;ACCESS_TOKEN_SECRET&quot;),
+        ConsumerKey:       os.Getenv(&quot;CONSUMER_KEY&quot;),
+        ConsumerSecret:    os.Getenv(&quot;CONSUMER_SECRET&quot;),
+    }
+    {
+        const DaysTotal int = 60
+        var remainingDays uint = 60
+        challenge := &quot;#DevOpsTraineeProgram&quot;
+
+        fmt.Printf(&quot;Welcome to the %v challenge.\nThis challenge consists of %v days\n&quot;, challenge, DaysTotal)
+
+        var TwitterName string
+        var DaysCompleted uint
+
+        // asking for user input
+        fmt.Println(&quot;Enter Your Twitter Handle: &quot;)
+        fmt.Scanln(&amp;TwitterName)
+
+        fmt.Println(&quot;How many days have you completed?: &quot;)
+        fmt.Scanln(&amp;DaysCompleted)
+
+        // calculate remaining days
+        remainingDays = remainingDays - DaysCompleted
+
+        //fmt.Printf(&quot;Thank you %v for taking part and completing %v days.\n&quot;, TwitterName, DaysCompleted)
+        //fmt.Printf(&quot;You have %v days remaining for the %v challenge\n&quot;, remainingDays, challenge)
+        // fmt.Println(&quot;Good luck&quot;)
+
+        client, err := getClient(&amp;creds)
+        if err != nil {
+            log.Println(&quot;Error getting Twitter Client, this is expected if you did not supply your Twitter API tokens&quot;)
+            log.Println(err)
+        }
+
+        message := fmt.Sprintf(&quot;Hey I am %v I have been doing the %v for %v days and I have %v Days left&quot;, TwitterName, challenge, DaysCompleted, remainingDays)
+        tweet, resp, err := client.Statuses.Update(message, nil)
+        if err != nil {
+            log.Println(err)
+        }
+        log.Printf(&quot;%+v\n&quot;, resp)
+        log.Printf(&quot;%+v\n&quot;, tweet)
+    }
+}
+
+</code></pre>
+<h3 id="note_1">Note</h3>
+<p>The outcome of this should be a tweet but if you did not supply your environment variables then you should get an error like the one below. </p>
+<p><img alt="" src="../../../Images/day02-07-04.png" /></p>
+<p>You also need to apply for elevated access, otherwise you'll get the following error message when you are trying to send your tweet:</p>
+<p><img alt="" src="../../../Images/day02-07-05.png" /></p>
+<p>Once you have fixed that, the resulting tweet should look something like this: </p>
+<p><img alt="" src="../../../Images/day02-07-06.png" /></p>
+<h2 id="how-to-compile-for-multiple-oss">How to compile for multiple OSs</h2>
+<p>I next want to cover the question, "How do you compile for multiple Operating Systems?" The great thing about Go is that it can easily compile for many different Operating Systems. You can get a full list by running the following command: </p>
+<pre><code>go tool dist list
+</code></pre>
+<p>Using our <code>go build</code> commands so far is great and it will use the <code>GOOS</code> and <code>GOARCH</code> environment variables to determine the host machine and what the build should be built for. But we can also create other binaries by using the code below as an example. </p>
+<pre><code>GOARCH=amd64 GOOS=darwin go build -o ${BINARY_NAME}_0.1_darwin main.go
+GOARCH=amd64 GOOS=linux go build -o ${BINARY_NAME}_0.1_linux main.go
+GOARCH=amd64 GOOS=windows go build -o ${BINARY_NAME}_0.1_windows main.go
+GOARCH=arm64 GOOS=linux go build -o ${BINARY_NAME}_0.1_linux_arm64 main.go
+GOARCH=arm64 GOOS=darwin go build -o ${BINARY_NAME}_0.1_darwin_arm64 main.go
+</code></pre>
+<p>This will then give you binaries in your directory for all of the above platforms. You can then take this and create a makefile to build these binaries whenever you add new features and functionality to your code. I have included the <a href="Go/makefile">makefile</a></p>
+<p>This is what I have used to create the releases you can now see on the <a href="https://github.com/MichaelCade/DevOpsTraineeProgram/releases">repository</a></p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://insights.stackoverflow.com/survey/2021">StackOverflow 2021 Developer Survey</a></li>
+<li><a href="https://www.youtube.com/watch?v=7pLqIIAqZD4&amp;t=9s">Why we are choosing Golang to learn</a></li>
+<li><a href="https://www.youtube.com/watch?v=C8LgvuEBraI&amp;t=312s">Jake Wright - Learn Go in 12 minutes</a> </li>
+<li><a href="https://www.youtube.com/watch?v=yyUHQIec83I">Techworld with Nana - Golang full course - 3 hours 24 mins</a> </li>
+<li><a href="https://www.pluralsight.com/courses/go-fundamentals"><strong>NOT FREE</strong> Nigel Poulton Pluralsight - Go Fundamentals - 3 hours 26 mins</a> </li>
+<li><a href="https://www.youtube.com/watch?v=YS4e4q9oBaU&amp;t=1025s">FreeCodeCamp -  Learn Go Programming - Golang Tutorial for Beginners</a> </li>
+<li><a href="https://www.youtube.com/playlist?list=PLRAV69dS1uWSR89FRQGZ6q9BR2b44Tr9N">Hitesh Choudhary - Complete playlist</a> </li>
+<li><a href="https://github.com/bregman-arie/devops-exercises">A great repo full of all things DevOps &amp; exercises</a></li>
+<li><a href="https://gobyexample.com/">GoByExample - Example based learning</a></li>
+<li><a href="https://go.dev/tour/list">go.dev/tour/list</a></li>
+<li><a href="https://go.dev/learn/">go.dev/learn</a></li>
+</ul>
+<p>This wraps up the Programming language for now! So much more that can be covered and I hope you have been able to continue through the content above and be able to understand some of the other aspects of the Go programming language. </p>
+<p>Next, we take our focus into Linux and some of the fundamentals that we should all know here. </p>
+<p>See you in the <a href="home.md">Next Section</a>.</p>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day02-06/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day02-06/" class="btn btn-sm btn-link">
+			6. Getting user input with Pointers and a finished program
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-04-19 20:44:56 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>
