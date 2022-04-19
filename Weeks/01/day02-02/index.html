@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>2. Setting up your DevOps environment for Go & Hello World - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "Setting up your DevOps environment for Go \u0026amp; Hello World", url: "#_top", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day02-01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day02-01/" class="btn btn-sm btn-link">
+			1. The Big Picture: Learning a Programming Language
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day02-03/" class="btn btn-sm btn-link">
+			3. Let's explain the Hello World code
+		</a>
+		<a href="../day02-03/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			
+
+			<h2 id="setting-up-your-devops-environment-for-go-hello-world">Setting up your DevOps environment for Go &amp; Hello World</h2>
+<p>Before we get into some of the fundamentals of Go we should get Go installed on our workstation and do what every "learning programming 101" module teaches us which is to create the Hello World app. As this one is going to be walking through the steps to get Go installed on your workstation we are going to attempt to document the process in pictures so it is can be easily followed along. </p>
+<p>First of all, let's head on over to <a href="https://go.dev/dl/">go.dev/dl</a> and you will be greeted with some available options for downloads. </p>
+<p><img alt="" src="https://i.imgur.com/MvoMvnK.png" /></p>
+<p>You probably know which workstation operating system you are running so select the appropriate download and then we can start the installation process. I am using MacOS for this walkthrough, basically, from this next screen, we can leave all the defaults in place for now. <strong><em>(I will note that at the time of writing this was the latest version so screenshots might be out of date)</em></strong> </p>
+<p><img alt="" src="https://i.imgur.com/iCtiaLM.png" /></p>
+<p>Also note if you do have an older version of Go installed you will have to remove this before installing, Windows has this built into the installer and will remove and install as one. </p>
+<p>Once finished you should now open a command prompt/terminal and we want to check that we have Go installed. If you do not get the output that we see below then Go is not installed and you will need to retrace your steps. </p>
+<p><code>go version</code></p>
+<p><img alt="" src="https://i.imgur.com/4FSjPie.png" /></p>
+<p>Next up we want to check our environment for Go. This is always good to check to make sure your working directories are configured correctly, as you can see below we need to make sure you have the following directory on your system. </p>
+<p><img alt="" src="https://i.imgur.com/74ger4s.png" /></p>
+<p>Did you check? Are you following along? You will probably get something like the below if you try and navigate there. </p>
+<p><img alt="" src="https://i.imgur.com/pTl0LjI.png" /></p>
+<p>Ok, let's create that directory for ease I am going to use the mkdir command through terminal. We also need to create 3 folders within the Go folder as you will see also below. </p>
+<p><img alt="" src="https://i.imgur.com/OnSKv4K.png" /></p>
+<p>Now we have Go installed and we have our Go working directory ready for action. We now need an  integrated development environment (IDE). Now there are many out there available that you can use but the most common and the one I use is Visual Studio Code or Code. You can learn more about IDEs <a href="https://www.youtube.com/watch?v=vUn5akOlFXQ">here</a>. </p>
+<p>If you have not downloaded and installed VSCode already on your workstation then you can do so by heading <a href="https://code.visualstudio.com/download">here</a>. As you can see below you have your different OS options. </p>
+<p><img alt="" src="https://i.imgur.com/lFMVjgk.png" /></p>
+<p>Much the same as with the Go installation we are going to download and install and keep the defaults. Once complete you can open VSCode and you can select Open File and navigate to our Go directory that we created above. </p>
+<p><img alt="" src="https://i.imgur.com/A4KAekA.png" /></p>
+<p>You may get a popup about trust, read it if you want and then hit Yes, trust the authors.</p>
+<p><img alt="" src="https://i.imgur.com/upQI6Kk.png" /></p>
+<p>Now you should see the three folders we also created earlier as well and what we want to do now is right click the src folder and create a new folder called <code>Hello</code></p>
+<p><img alt="" src="https://i.imgur.com/SwpRJC9.png" /></p>
+<p>Pretty easy stuff I would say up till this point? Now we are going to create our first Go Program with no understanding about anything we put in this next phase. </p>
+<p>Next create a file called <code>main.go</code> in your <code>hello</code> folder. As soon as you hit enter on the main.go you will be asked if you want to install the Go extension. Go ahead and install those as it will package additional files for you. Once it is done installing, you'll be able to check that the empty pkg file that we made a few steps back now has some new packages inside it:</p>
+<p><img alt="" src="https://i.imgur.com/rdBG1SJ.png" /></p>
+<p>Now let's get this Hello World app going, copy for the following code into your new main.go file and save that. </p>
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    fmt.Println(&quot;Hello #DevOpsTraineeProgram&quot;)
+}
+</code></pre>
+<p>Now lets appreciate that the above might make no sense at all, but we will cover more about functions, packages and more in later days. For now let's run our app. Back in the terminal and in our Hello folder we can now check that all is working. Using the command below we can check to see if our generic learning program is working. </p>
+<pre><code>go run main.go
+</code></pre>
+<p><img alt="" src="https://i.imgur.com/S3LrXJn.png" /></p>
+<p>It doesn't end there though, what if we now want to take our program and run it on other MacOS machines? We can do that by building our binary using the following command </p>
+<pre><code>go build main.go
+</code></pre>
+<p><img alt="" src="https://i.imgur.com/oEzxewa.png" /></p>
+<p>If we execute this file with <code>./main</code> instead of <code>go run main</code> as you'll get the following message if you do <code>package main is not in GOROOT</code></p>
+<p><img alt="" src="https://i.imgur.com/rOZvcfy.png" /></p>
+<p>See you on <a href="../day02-03/">Next Section</a>.</p>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day02-01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day02-01/" class="btn btn-sm btn-link">
+			1. The Big Picture: Learning a Programming Language
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day02-03/" class="btn btn-sm btn-link">
+			3. Let's explain the Hello World code
+		</a>
+		<a href="../day02-03/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-04-19 13:58:11 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>

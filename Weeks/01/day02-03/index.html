@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>3. Let's explain the Hello World code - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "Let\u0027s explain the Hello World code", url: "#_top", children: [
+						
+				{title: "How Go works", url: "#_top", children: [
+				]},
+				{title: "What is Compiling?", url: "#what-is-compiling", children: [
+				]},
+				{title: "What are packages?", url: "#what-are-packages", children: [
+				]},
+				{title: "Hello #DevOpsTraineeProgram Line by Line", url: "#hello-devopstraineeprogram-line-by-line", children: [
+				]},
+				{title: "TLDR", url: "#tldr", children: [
+				]},
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day02-02/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day02-02/" class="btn btn-sm btn-link">
+			2. Setting up your DevOps environment for Go & Hello World
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day02-04/" class="btn btn-sm btn-link">
+			4. The Go Workspace
+		</a>
+		<a href="../day02-04/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			
+
+			<h2 id="lets-explain-the-hello-world-code">Let's explain the Hello World code</h2>
+<h3 id="how-go-works">How Go works</h3>
+<p>On the <a href="../day02-02/">Previous Section</a> we walked through getting Go installed on your workstation and we then created our first Go application. </p>
+<p>In this section, we are going to take a deeper look into the code and understand a few more things about the Go language. </p>
+<h3 id="what-is-compiling">What is Compiling?</h3>
+<p>Before we get into the <a href="https://pastebin.com/raw/QhQSpkvW">6 lines of the Hello World code</a> we need to have a bit of an understanding about compiling.</p>
+<p>Programming languages that we commonly use such as Python, Java, Go and C++ are high-level languages. Meaning they are human-readable but when a machine is trying to execute a program it needs to be in a form that a machine can understand. We have to translate our human-readable code to machine code which is called compiling. </p>
+<p><img alt="" src="https://i.imgur.com/jRKCSbU.png" /></p>
+<p>From the above you can see what we did on <a href="../day02-02/">Previous Section</a> here, we created a simple Hello World main.go and we then used the command <code>go build main.go</code> to compile our executable. </p>
+<h3 id="what-are-packages">What are packages?</h3>
+<p>A package is a collection of source files in the same directory that are compiled together. We can simplify this further, a package is a bunch of .go files in the same directory. Remember our Hello folder from Day 8? If and when you get into more complex Go programs you might find that you have folder1 folder2 and folder3 containing different .go files that make up your program with multiple packages. </p>
+<p>We use packages so we can reuse other peoples code, we don't have to write everything from scratch. Maybe we are wanting a calculator as part of our program, you could probably find an existing Go Package that contains the mathematical functions that you could import into your code saving you a lot of time and effort in the long run.  </p>
+<p>Go encourages you to organise your code in packages so that it is easy to reuse and maintain source code. </p>
+<h3 id="hello-devopstraineeprogram-line-by-line">Hello #DevOpsTraineeProgram Line by Line</h3>
+<p>Now let's take a look at our Hello #DevOpsTraineeProgram main.go file and walk through the lines. </p>
+<p><img alt="" src="https://i.imgur.com/OafvqiF.png" /></p>
+<p>In the first line, you have <code>package main</code> which means that this file belongs to a package called main. All .go files need to belong to a package, they should also have <code>package something</code> in the opening line. </p>
+<p>A package can be named whatever you wish. We have to call this <code>main</code> as this is the starting point of the program that is going to be in this package, this is a rule. (Feel free to further research to understand more regarding this rule.)    </p>
+<p><img alt="" src="https://i.imgur.com/kEppROM.png" /></p>
+<p>Whenever we want to compile and execute our code we have to tell the machine where the execution needs to start. We do this by writing a function called main. The machine will look for a function called main to find the entry point of the program. </p>
+<p>A function is a block of code that can do some specific task for and can be used across the program. </p>
+<p>You can declare a function with any name using <code>func</code> but in this case we need to name it <code>main</code> as this is where the code starts. </p>
+<p><img alt="" src="https://i.imgur.com/n6W71u5.png" /></p>
+<p>Next we are going to look at line 3 of our code, the import, this basically means you want to bring in another package to your main program. fmt is a standard package being used here provided by Go, this package contains the <code>Println()</code>function and because we have imported this we can use this in line 6. There are a number of standard packages you can include in your program and leverage or reuse them in your code saving you the hassle of having to write from scratch. <a href="https://pkg.go.dev/std">Go Standard Library</a></p>
+<p><img alt="" src="https://i.imgur.com/TEtu7cm.png" /></p>
+<p>the <code>Println()</code> that we have here is a way in which to write to a standard output to the terminal whenever the executuable has been executed succesfully. Feel free to change the message in between the <code>()</code>. </p>
+<p><img alt="" src="https://i.imgur.com/PpvQy0e.png" /></p>
+<h3 id="tldr">TLDR</h3>
+<ul>
+<li><strong>Line 1</strong> = This file will be in the package called <code>main</code> and this needs to be called <code>main</code> because includes the entry point of the program. </li>
+<li><strong>Line 3</strong> = For us to be able to use the <code>Println()</code> function, we have to import the fmt package to use this on line 6. </li>
+<li><strong>Line 5</strong> = The actual starting point, its the <code>main</code> function. </li>
+<li><strong>Line 6</strong> = This will let us print "Hello #DevOpsTraineeProgram" on our system. </li>
+</ul>
+<p>See you on <a href="day10.md">Next Section</a>.</p>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day02-02/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day02-02/" class="btn btn-sm btn-link">
+			2. Setting up your DevOps environment for Go & Hello World
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day02-04/" class="btn btn-sm btn-link">
+			4. The Go Workspace
+		</a>
+		<a href="../day02-04/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-04-19 13:58:11 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>5. Variables & Constants in Go - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "Variables \u0026amp; Constants in Go", url: "#_top", children: [
+				]},
+				{title: "Data Types", url: "#data-types", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day02-04/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day02-04/" class="btn btn-sm btn-link">
+			4. The Go Workspace
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			
+
+			<p>Before we get into the topics for today I want to give a massive shout out to <a href="https://www.youtube.com/watch?v=yyUHQIec83I">Techworld with Nana</a> and this fantastic concise journey through the fundamentals of Go. </p>
+<p>On <a href="../day02-02/">Section 2</a> we set our environment up, on <a href="../day02-03/">Section 3</a> we walked through the Hello #DevOpsTraineeProgram code and on <a href="../day02-04/">Section 4</a>) we looked at our Go workspace and went a little deeper into compiling and running the code.</p>
+<p>We are now going to take a look into Variables, Constants and Data Types whilst writing a new program. </p>
+<h2 id="variables-constants-in-go">Variables &amp; Constants in Go</h2>
+<p>Let's start by planning our application, I think it would be a good idea to work on a program that tells us how many days we have remain in our #DevOpsTraineeProgram. </p>
+<p>The first thing to consider here is that as we are building our app and we are welcoming our attendees and we are giving the user feedback on the number of days they have completed we might use the term #DevOpsTraineeProgram many times throughout the program. This is a great use case to make #DevOpsTraineeProgram a variable within our program. </p>
+<ul>
+<li>Variables are used to store values. </li>
+<li>Like a little box with our saved information or values. </li>
+<li>We can then use this variable across the program which also benefits that if this challenge or variable changes then we only have to change this in one place. Meaning we could translate this to other challenges we have in the community by just changing that one variable value. </li>
+</ul>
+<p>To declare this in our Go Program we define a value by using a <strong>keyword</strong> for variables. This will live within our <code>func main</code> block of code that you will see later. You can find more about <a href="https://go.dev/ref/spec#Keywords">Keywords</a>here. </p>
+<p>Remember to make sure that your variable names are descriptive. If you declare a variable you must use it or you will get an error, this is to avoid possible dead code, code that is never used. This is the same for packages not used. </p>
+<pre><code>var challenge = &quot;#DevOpsTraineeProgram&quot;
+</code></pre>
+<p>With the above set and used as we will see in the next code snippet you can see from the output below that we have used a variable. </p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    var challenge = &quot;#DevOpsTraineeProgram&quot;
+    fmt.Println(&quot;Welcome to&quot;, challenge, &quot;&quot;)
+}
+</code></pre>
+<p>You can find the above code snippet on <a href="https://pastebin.com/U4CsgAaK">Pastebin</a></p>
+<p>You will then see from the below that we built our code with the above example and we got the output shown below. </p>
+<p><img alt="" src="https://i.imgur.com/0SvzuE6.png" /></p>
+<p>We also know that our challenge is 60 days at least but maybe we'd like to extend it to 90 in the future! If this is the case, we'd want to define a variable to help us be as flexible as possible. However, for our this program and exercise we want to define it as a constant. Constants are like variables, except that their value cannot be changed within code (we can still create a new app later down the line with this same snippet of code and decide to change this constant but this 60 value will not change whilst we are running our application)</p>
+<p>Adding the <code>const</code> to our code and adding another line of code to print this. </p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    var challenge = &quot;#DevOpsTraineeProgram&quot;
+    const daystotal = 60
+
+    fmt.Println(&quot;Welcome to&quot;, challenge)
+    fmt.Println(&quot;This is a&quot;, daystotal, &quot;challenge&quot;)
+}
+</code></pre>
+<p>You can find the above code snippet on <a href="https://pastebin.com/wt6fLsAL">Pastebin</a></p>
+<p>If we then go through that <code>go build</code> process again and run you will see below the outcome.</p>
+<p><img alt="" src="https://i.imgur.com/qsWeUT3.png" /></p>
+<p>Finally, and this won't be the end of our program we will come back to this in next Sections to add more functionality. We now want to add another variable for the number of days we have completed the challenge. </p>
+<p>Below we've added <code>dayscomplete</code> variable with the number of days completed. </p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    var challenge = &quot;#DevOpsTraineeProgram&quot;
+    const daystotal = 60
+    var dayscomplete = 11
+
+    fmt.Println(&quot;Welcome to&quot;, challenge, &quot;&quot;)
+    fmt.Println(&quot;This is a&quot;, daystotal, &quot;challenge and you have completed&quot;, dayscomplete, &quot;days&quot;)
+    fmt.Println(&quot;Great work&quot;)
+}
+</code></pre>
+<p>You can find the above code snippet on <a href="https://pastebin.com/6C3FBqdZ">Pastebin</a></p>
+<p>Let's run through that <code>go build</code> process again or you could just use <code>go run</code></p>
+<p><img alt="" src="https://i.imgur.com/kUulhbh.png" /></p>
+<p>Here are some other examples that I have used to make the code easier to read and edit. We have up till now been using <code>Println</code> but we can simplify this by using <code>Printf</code> by using <code>%v</code> which means we define our variables in order at the end of the line of code. we also use <code>\n</code> for a line break. </p>
+<p>I am using <code>%v</code> as this uses a default value but there are other options that can be found here in the <a href="https://pkg.go.dev/fmt">fmt package documentation</a> you can find the code example <a href="https://pastebin.com/PEAVG3ra">here</a>:</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    var challenge = &quot;#DevOpsTraineeProgram&quot;
+    const daystotal = 90
+    var dayscomplete = 11
+
+    fmt.Printf(&quot;Welcome to %v\n&quot;, challenge)
+    fmt.Printf(&quot;This is a %v challenge and you have completed %v days\n&quot;, daystotal, dayscomplete)
+    fmt.Println(&quot;Great work&quot;)
+}
+</code></pre>
+<p>Variables may also be defined in a simpler format in your code. Instead of defining that it is a <code>var</code> and the <code>type</code> you can code this as follows to get the same functionality but a nice cleaner and simpler look for your code. This will only work for variables though and not constants.  </p>
+<pre><code class="language-go">func main() {
+    challenge := &quot;#DevOpsTraineeProgram&quot;
+    const daystotal = 60
+</code></pre>
+<h2 id="data-types">Data Types</h2>
+<p>In the above examples, we have not defined the type of variables, this is because we can give it a value here and Go is smart enough to know what that type is or at least can infer what it is based on the value you have stored. However, if we want a user to input this will require a specific type. </p>
+<p>We have used Strings and Integers in our code so far. Integers for the number of days and strings are for the name of the challenge. </p>
+<p>It is also important to note that each data type can do different things and behaves differently. For example, integers can multiply where strings do not. </p>
+<p>There are four categories </p>
+<ul>
+<li><strong>Basic type</strong>: Numbers, strings, and booleans come under this category.</li>
+<li><strong>Aggregate type</strong>: Array and structs come under this category.</li>
+<li><strong>Reference type</strong>: Pointers, slices, maps, functions, and channels come under this category.</li>
+<li><strong>Interface type</strong></li>
+</ul>
+<p>The data type is an important concept in programming. Data type specifies the size and type of variable values.</p>
+<p>Go is statically typed, meaning that once a variable type is defined, it can only store data of that type.</p>
+<p>Go has three basic data types:</p>
+<ul>
+<li><strong>bool</strong>: represents a boolean value and is either true or false</li>
+<li><strong>Numeric</strong>: represents integer types, floating-point values, and complex types</li>
+<li><strong>string</strong>: represents a string value</li>
+</ul>
+<p>I found this resource super detailed on data types <a href="https://golangbyexample.com/all-data-types-in-golang-with-examples/">Golang by example</a></p>
+<p>I would also suggest <a href="https://www.youtube.com/watch?v=yyUHQIec83I&amp;t=2023s">Techworld with Nana</a> at this point covers in some detail a lot about the data types in Go. </p>
+<p>If we need to define a type in our variable we can do this like so: </p>
+<pre><code class="language-go">var TwitterHandle string 
+var DaysCompleted uint
+</code></pre>
+<p>Because Go implies variables where a value is given we can print out those values with the following: </p>
+<pre><code class="language-go">fmt.Printf(&quot;challenge is %T, daystotal is %T, dayscomplete is %T\n&quot;, conference, daystotal, dayscomplete)
+</code></pre>
+<p>There are many different types of integer and float types the links above will cover off these in detail. </p>
+<ul>
+<li><strong>int</strong> = whole numbers</li>
+<li><strong>unint</strong> = positive whole numbers</li>
+<li><strong>floating point types</strong> = numbers that contain a decimal component</li>
+</ul>
+<p>Next up we are going to start adding some user input functionality to our program so that we are asking how many days have been completed. </p>
+<p>See you on <a href="day02-06.md">Next Section</a>.</p>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day02-04/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day02-04/" class="btn btn-sm btn-link">
+			4. The Go Workspace
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-04-19 13:58:11 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>

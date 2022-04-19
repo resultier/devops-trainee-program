@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>1. The Big Picture: Learning a Programming Language - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "The Big Picture: DevOps \u0026amp; Learning a Programming Language", url: "#_top", children: [
+				]},
+				{title: "Understand why you need to learn a programming language.", url: "#understand-why-you-need-to-learn-a-programming-language", children: [
+				]},
+				{title: "Did we just talk ourselves out of learning a programming language?", url: "#did-we-just-talk-ourselves-out-of-learning-a-programming-language", children: [
+				]},
+				{title: "Why Go", url: "#why-go", children: [
+				]},
+				{title: "Build and Deployment of Go Programs", url: "#build-and-deployment-of-go-programs", children: [
+				]},
+				{title: "Go vs Python for DevOps", url: "#go-vs-python-for-devops", children: [
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day01-05/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day01-05/" class="btn btn-sm btn-link">
+			5. The real stories
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day02-02/" class="btn btn-sm btn-link">
+			2. Setting up your DevOps environment for Go & Hello World
+		</a>
+		<a href="../day02-02/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			
+
+			<h2 id="the-big-picture-devops-learning-a-programming-language">The Big Picture: DevOps &amp; Learning a Programming Language</h2>
+<p>It is important to highlight that to be successful in the long term as a DevOps engineer, you've got to know at least one programming language at a foundational level. We want to take this first session of this section to explore why this is such a critical skill to have, and hopefully, by the end of this week or section, you are going to have a better understanding of the why, how and what to do to progress with your learning journey. </p>
+<p>If we were to ask out on the wild if you need to have programming skills for DevOps related roles, the answer would probably be a resounding yes. However, the bigger question here that most of us ask ourselves is which programming language should I invest my time into? The most common answer in 2022 has been Python or increasingly more often, we're seeing Golang or Go as one of the best languages that you can learn for this role. </p>
+<p>To be successful in DevOps you have to have a good knowledge of programming skills but further than that, what is value in the role is the ability to solve problems as much as proposing architectural designs and solutions for scalable applications in the cloud.</p>
+<h2 id="understand-why-you-need-to-learn-a-programming-language">Understand why you need to learn a programming language.</h2>
+<p>The reason that Python and Go are recommended so often for DevOps engineers is that a lot of the DevOps tooling is written in either Python or Go, which makes sense if you are going to be building, using and maintaing any type of DevOps tools. Now this is important as this will determine really what you should learn and that would likely be the most beneficial skillsets for this career path. Since in the future, we are going to be heavily involved in Kubernetes and Containers, then it's more than likely that choosing Go as your programming language would heavily increase productivity but Python will be as helpful for you. In our ecosystems, we are focusing on deploying EC2 instances on AWS and automating a lot of our tasks and deployments using Terraform so having knowledge on data management for Kubernetes will be beneficial as everything is written in Go. </p>
+<p>Remember we are not going to be building applications but the goal here is to understand a little more about the programming language so that we can read and understand what those tools are doing and then that can bring opportunities on how we can help on improving our tools. </p>
+<p>I would also it is also important to know how you interact with those DevOps tools which could be K8s or it could be Terraform and Ansible. These are what we will call config files and this is how you interact with those DevOps tools to make things happen, commonly these are going to be YAML. (We may use the last day of this section to dive a little into YAML) </p>
+<h2 id="did-we-just-talk-ourselves-out-of-learning-a-programming-language">Did we just talk ourselves out of learning a programming language?</h2>
+<p>Most of the time or depending on the role, you will be helping engineering teams implement DevOps into their workflow, a lot of testing around the application and making sure that the workflow that is built aligns to those DevOps principles we mentioned over the first few days. But in reality, this is going to be a lot of the time troubleshooting an application performance issue or something along those lines. This comes back to my original point and reasoning, the programming language I need to know is the one that the code is written in? If their application is written in NodeJS it won’t help much if you have a Go or Python badge or certification. </p>
+<h2 id="why-go">Why Go</h2>
+<p>You may ask yourself why is Golangv considered as the next programming language for DevOps and you may find that most Go most definitely has become a very popular programming language in recent years. According to the StackOverflow Survey for 2021, Go came in fourth for the most wanted Programming, scripting and markup languages with Python being top. <a href="https://insights.stackoverflow.com/survey/2021#section-most-loved-dreaded-and-wanted-programming-scripting-and-markup-languages">StackOverflow 2021 Developer Survey – Most Wanted Link</a></p>
+<p>However, as I have also mentioned some of the most known DevOps tools and platforms are written in Go such as Kubernetes, Docker, Grafana and Prometheus and having at least a base knowledge on Go will greatly elevate your understanding when working with those type of tools.</p>
+<p>What are some of the characteristics of Go that make it great for DevOps?</p>
+<h2 id="build-and-deployment-of-go-programs">Build and Deployment of Go Programs</h2>
+<p>An advantage of using a language like Python that is interpreted in a DevOps role is that you don’t need to compile a python program before running it. Especially for smaller automation tasks, you don’t want to be slowed down by a build process that requires compilation even though, Go is a compiled programming language, <strong>Go compiles directly into machine code</strong>.  Go is known also for fast compilation times. </p>
+<h2 id="go-vs-python-for-devops">Go vs Python for DevOps</h2>
+<p>Go Programs are statically linked, this means that when you compile a go program everything is included in a single binary executable, no external dependencies will be required that would need to be installed on the remote machine, this makes the deployment of go programs easy, compared to python program that uses external libraries you have to make sure that all those libraries are installed on the remote machine that you wish to run on. </p>
+<p>Go is a platform-independent language, which means you can produce binary executables for *all the operating systems, Linux, Windows, macOS etc and very easy to do so. With Python, it is not as easy to create these binary executables for particular operating systems. </p>
+<p>Go is a very performant language, it has fast compilation and fast run time with lower resource usage like CPU and memory especially compared to python, numerous optimizations have been implemented in the Go language that makes it so performant. (Resources below) </p>
+<p>Unlike Python which often requires the use of third party libraries to implement a particular python program, go includes a standard library that has the majority of functionality that you would need for DevOps built directly into it. This includes functionality file processing, HTTP web services, JSON processing, native support for concurrency and parallelism as well as built-in testing. </p>
+<p>This is by no way throwing Python under the bus as we will still be touching and seeing python further down the course, however the main reasoning here for choosing Go just right now is so that we can have a broader knowledge on how Go applications are constructed, however in the future you can easiy focus on Python if that's your cup of tea and that's completely valid. Just that for now, we will work with Go just to build general bases on it which will prove to be helpful whenever we work with devops tools that are programmed on this specific language.</p>
+<p>I will say that once you start fo fully master a programming language it becomes easier to take on other languages. You're probably never going to have a single job in any company anywhere where you don't have to deal with manage, architect, orchestrating, debug JavaScript and Node JS applications so being able to be versatile with our skills will definitely set us up for success.</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://insights.stackoverflow.com/survey/2021">StackOverflow 2021 Developer Survey</a></li>
+<li><a href="https://www.youtube.com/watch?v=7pLqIIAqZD4&amp;t=9s">Why we are choosing Golang to learn</a></li>
+<li><a href="https://www.youtube.com/watch?v=C8LgvuEBraI&amp;t=312s">Jake Wright - Learn Go in 12 minutes</a> </li>
+<li><a href="https://www.youtube.com/watch?v=yyUHQIec83I">Techworld with Nana - Golang full course - 3 hours 24 mins</a> </li>
+</ul>
+<!-- - [**NOT FREE** Nigel Poulton Pluralsight - Go Fundamentals - 3 hours 26 mins](https://www.pluralsight.com/courses/go-fundamentals)  -->
+<ul>
+<li><a href="https://www.youtube.com/watch?v=YS4e4q9oBaU&amp;t=1025s">FreeCodeCamp -  Learn Go Programming - Golang Tutorial for Beginners</a> </li>
+<li><a href="https://www.youtube.com/playlist?list=PLRAV69dS1uWSR89FRQGZ6q9BR2b44Tr9N">Hitesh Choudhary - Complete playlist</a> </li>
+</ul>
+<p>Now for the next 6 days of this topic my intention is to work through some of the resources listed above and document your notes for each day. You will notice that they are generally around 3 hours as a full course, I wanted to share my complete list so that if you have time you should move ahead and work through each one if time permits. I am not expecting that we will learn a programming language from beginning to end within a week but will definitely be a great tool to start using on our workflows.</p>
+<p>See you in <a href="../day02-02/">Next Section</a>. </p>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day01-05/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day01-05/" class="btn btn-sm btn-link">
+			5. The real stories
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day02-02/" class="btn btn-sm btn-link">
+			2. Setting up your DevOps environment for Go & Hello World
+		</a>
+		<a href="../day02-02/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-04-19 13:58:11 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>
