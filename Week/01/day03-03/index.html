@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>3. Managing your Linux System, Filesystem & Storage - Day 16 - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "Managing your Linux System, Filesystem \u0026amp; Storage", url: "#_top", children: [
+				]},
+				{title: "Managing Ubuntu \u0026amp; Software", url: "#managing-ubuntu-software", children: [
+				]},
+				{title: "File System Explained", url: "#file-system-explained", children: [
+				]},
+				{title: "Storage", url: "#storage", children: [
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day03-02/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day03-02/" class="btn btn-sm btn-link">
+			2. Linux Commands for DevOps (Actually everyone)
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day03-04/" class="btn btn-sm btn-link">
+			4. Text Editors - Nano vs Vim
+		</a>
+		<a href="../day03-04/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			
+
+			<h2 id="managing-your-linux-system-filesystem-storage">Managing your Linux System, Filesystem &amp; Storage</h2>
+<p>So far we have had a brief overview of Linux and DevOps and then we got our lab environment set up using <a href="../day03-01/">vagant</a>, we then touched on a small portion of commands that will be in your daily toolkit when in the terminal and getting things done on the <a href="../day03-02/">Previous Section</a>. </p>
+<p>Here we are going to look into three key areas of looking after your Linux systems with updates, installing software, understanding what system folders are used for and we will also take a look at storage. </p>
+<h2 id="managing-ubuntu-software">Managing Ubuntu &amp; Software</h2>
+<p>The first thing we are going to look at is how we update our operating system. Most of you will be familiar with this process in a Windows OS and macOS, this looks slightly different on a Linux desktop and server.  </p>
+<p>We are going to be looking at the apt package manager, this is what we are going to use on our Ubuntu VM for updates and software installation. </p>
+<p>Generally, at least on dev workstations, I run this command to make sure that I have the latest available updates from the central repositories, before any software installation.  </p>
+<p><code>sudo apt-get update</code></p>
+<p>Now we have an updated Ubuntu VM with the latest OS updates installed. We now want to get some software installed here. </p>
+<p>Let's choose <code>figlet</code> which is a program that generates text banners.</p>
+<p>If we type <code>figlet</code> in our terminal you are going to see that we do not have it installed on our system. </p>
+<p>You will see from the above though that it does give us some <code>apt</code> install options that we could try. This is because in the default repositories there is a program called figlet.  Let's try <code>sudo apt install figlet</code></p>
+<p>We can now use our <code>figlet</code> app as you can see below. </p>
+<p>If we want to remove that or any of our software installations we can also do that via the <code>apt</code> package manager. </p>
+<p><code>sudo apt remove figlet</code></p>
+<p>There are third party repositories that we can also add to our system, the ones we have access to out of the box are the Ubuntu default repositories. </p>
+<p>If for example, we wanted to install vagrant on our Ubuntu VM we would not be able to right now and you can see this below on the first command issued. We then add the key to trust the HashiCorp repository, then add the repository to our system.  </p>
+<p>Once we have the HashiCorp repository added we can go ahead and run <code>sudo apt install vagrant</code> and get vagrant installed on our system. </p>
+<p>There are so many options when it comes to software installation, different options for package managers, built into Ubuntu we could also use snaps for our software installations. </p>
+<p>Hopefully, this gives you a feel about how to manage your OS and software installations on Linux. </p>
+<h2 id="file-system-explained">File System Explained</h2>
+<p>Linux is made up of configuration files, if you want to change anything then you change these configuration files. </p>
+<p>On Windows, you have C: drive and that is what we consider the root. On Linux we have <code>/</code> this is where we are going to find the important folders on our Linux system. </p>
+<ul>
+<li>
+<p><code>/bin</code> - Short for binary, the bin folder is where our binaries that your system needs, executables and tools will mostly be found here.  </p>
+</li>
+<li>
+<p><code>/boot</code> - All the files your system needs to boot up. How to boot up, and what drive to boot from. </p>
+</li>
+<li>
+<p><code>/dev</code> - You can find device information here, this is where you will find pointers to your disk drives <code>sda</code> will be your main OS disk. </p>
+</li>
+<li>
+<p><code>/etc</code> Likely the most important folder on your Linux system, this is where the majority of your configuration files. </p>
+</li>
+<li>
+<p><code>/home</code> - this is where you will find your user folders and files. We have our vagrant user folder. This is where you will find your <code>Documents</code> and <code>Desktop</code> folders that we worked in for the commands section. </p>
+</li>
+<li>
+<p><code>/lib</code> - We mentioned that <code>/bin</code> is where our binaries and executables live, <code>/lib</code> is where you will find the shared libraries for those. </p>
+</li>
+<li>
+<p><code>/media</code> - This is where we will find removable devices. </p>
+</li>
+<li>
+<p><code>/mnt</code> - This is a temporary mount point. We will cover more here in the next storage section. </p>
+</li>
+<li>
+<p><code>/opt</code> - Optional software packages. You will notice here that we have some vagrant and virtual box software stored here. </p>
+</li>
+<li>
+<p><code>/proc</code> - Kernel &amp; process information, similar to <code>/dev</code></p>
+</li>
+<li>
+<p><code>/root</code> - To gain access you will need to sudo into this folder. The home folder for root. </p>
+</li>
+<li>
+<p><code>/run</code> -Placeholder for application states.</p>
+</li>
+<li>
+<p><code>/sbin</code> - Sudo bin, similar to the bin folder but these tools are intended for elevated superuser privileges on the system.</p>
+</li>
+<li>
+<p><code>/tmp</code> - temporary files. </p>
+</li>
+<li>
+<p><code>/usr</code> - If we as a standard user have installed software packages it would generally be installed in the <code>/usr/bin</code> location. </p>
+</li>
+<li>
+<p><code>/var</code> - Our applications get installed in a <code>bin</code> folder. We need somewhere to store all of the log files this is <code>/var</code>   </p>
+</li>
+</ul>
+<h2 id="storage">Storage</h2>
+<p>When we come to a Linux system or any system we might want to know the available disks and how much free space we have on those disks. The next few commands will help us identify and use and manage storage. </p>
+<ul>
+<li>
+<p><code>lsblk</code> List Block devices. <code>sda</code> is our physical disk and then <code>sda1, sda2, sda3</code> are our partitions on that disk. </p>
+</li>
+<li>
+<p><code>df</code> gives us a little more detail about those partitions, total, used and available. You can parse other flags here I generally use <code>df -h</code> to give us a human output of the data. </p>
+</li>
+</ul>
+<p>If you were adding a new disk to your system and this is the same in Windows you would need to format the disk in disk management, in the Linux terminal you can do this by using the <code>sudo mkfs -t ext4 /dev/sdb</code> with sdb relating to our newly added disk. </p>
+<p>We would then need to mount our newly formatted disk so that it was useable. We would do this in our <code>/mnt</code> folder previously mentioned and we would create a directory there with <code>sudo mkdir NewDisk</code> we would then use <code>sudo mount /dev/sdb newdisk</code> to mount the disk to that location. </p>
+<p>It is also possible that you will need to unmount storage from your system safely vs just pulling it from the configuration. We can do this with <code>sudo umount /dev/sdb</code> </p>
+<p>If you did not want to unmount that disk and you were going to be using this disk for a database or some other persistent use case then you want it to be there when you reboot your system. For this to happen we need to add this disk to our <code>/etc/fstab</code> configuration file for it to persist, if you don't it won't be useable when the machine reboots and you would manually have to go through the above process. The data will still be there on the disk but it won't automount unless you add the configuration to this file. </p>
+<p>Once you have edited the <code>fstab</code> configuration file you can check your workings with <code>sudo mount -a</code> if no errors then your changes will now be persistent across restarts. </p>
+<p>We will cover how you would edit a file using a text editor in a future session. </p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://youtu.be/HbgzrKJvDRw">Linux File System/Structure Explained!</a></li>
+<li><a href="https://youtu.be/A3G-3hp88mo">The Linux File System explained in 1,233 seconds // Linux for Hackers // EP 2</a></li>
+</ul>
+<p>See you in the <a href="../day03-04/">Next Section</a></p>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day03-02/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day03-02/" class="btn btn-sm btn-link">
+			2. Linux Commands for DevOps (Actually everyone)
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day03-04/" class="btn btn-sm btn-link">
+			4. Text Editors - Nano vs Vim
+		</a>
+		<a href="../day03-04/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-04-20 14:54:44 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>

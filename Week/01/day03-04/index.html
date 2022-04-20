@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>4. Text Editors - Nano vs Vim - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "Text Editors - nano vs vim", url: "#_top", children: [
+						
+				{title: "nano", url: "#_top", children: [
+				]},
+				{title: "vim", url: "#vim", children: [
+				]},
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day03-03/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day03-03/" class="btn btn-sm btn-link">
+			3. Managing your Linux System, Filesystem & Storage - Day 16
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day03-05/" class="btn btn-sm btn-link">
+			5. SSH & Web Server
+		</a>
+		<a href="../day03-05/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			
+
+			<h2 id="text-editors-nano-vs-vim">Text Editors - nano vs vim</h2>
+<p>The majority of your Linux systems are going to be servers and these are not going to have a GUI. I also mentioned in the last session that Linux is mostly made up of configuration files, to make changes you are going to need to be able to edit those configuration files to change anything on the system. </p>
+<p>There are lots of options out there but I think we should cover probably the two most common terminal text editors. I have used both of these editors and for me, I find <code>nano</code> the easy button when it comes to quick changes but <code>vim</code> has such a broad set of capabilities. </p>
+<h3 id="nano">nano</h3>
+<ul>
+<li>Not available on every system. </li>
+<li>Great for getting started.</li>
+</ul>
+<p>If you run <code>nano DevOpsTraineeProgram.txt</code> we will create a new file with nothing in, from here we can add our text and we have our instructions below for what we want to do with that file. </p>
+<p>We can now use <code>control x + enter</code> and then run <code>ls</code> you can now see our new text file. </p>
+<p>If we then decide to run <code>cat</code> against that file to read our file. We can then use that same <code>nano DevOpsTraineeProgram.txt</code> to add additional text or modify your file. </p>
+<p>For me, nano is super easy when it comes to getting small changes done on configuration files. </p>
+<h3 id="vim">vim</h3>
+<p>Possibly the most common text editor around? A sibling of the UNIX text editor vi from 1976 we get a lot of functionality with vim. </p>
+<ul>
+<li>Pretty much supported on every single Linux distribution. </li>
+<li>Incredibly powerful! You can likely find a full 7-hour course just covering vim. </li>
+</ul>
+<p>We can jump into vim with the <code>vim</code> command or if we want to edit our new txt file we could run <code>vim DevOpsTraineeProgram.txt</code> but you are going to first see the lack of help menus at the bottom. </p>
+<p>The first question might be "How do I exit vim?" that is going to be <code>escape</code> and if we have not made any changes then it will be <code>:q</code>  </p>
+<p>You start in <code>normal</code> mode, there are other modes <code>command, normal, visual, insert</code> , if we want to add the text we will need to switch from <code>normal</code> to <code>insert</code> we need to press <code>i</code> if you have added some text and would like to save these changes then you would hit escape and then <code>:wq</code> </p>
+<p>You can confirm this with the <code>cat</code> command to check you have saved those changes. </p>
+<p>There is some cool fast functionality with vim that allows you to do menial tasks very quickly if you know the shortcuts which is a lecture in itself. Let's say we have added a list of repeated words and we now need to change that, maybe it's a configuration file and we repeat a network name and now this has changed and we quickly want to change this. I am using the word day for this example. </p>
+<p>Now we want to replace that word with DevOpsTraineeProgram, we can do this by hitting <code>esc</code> and typing <code>:%s/Day/DevOpsTraineeProgram</code></p>
+<p>The outcome when you hit enter is that the word day is then replaced with DevOpsTraineeProgram. </p>
+<p>Copy and Paste was a big eye-opener for me. Copy is not copy in here but it is called <strong>yank</strong>. we can copy using <code>yy</code> on our keyboard in normal mode. <code>p</code> paste on the same line, <code>P</code> paste on a new line. </p>
+<p>You can also delete these lines by choosing the number of lines you wish to delete followed by <code>dd</code> </p>
+<p>There is also likely a time you will need to search a file, now we can use <code>grep</code> as mentioned in a previous session but we can also use vim. we can use <code>/word</code> and this will find the first match, to navigate through to the next you will use the <code>n</code> key and so on. </p>
+<p>For vim this is not even touching the surface, the biggest advice I can give is to get hands-on and use vim wherever possible. </p>
+<p>A common interview question is what is your favourite text editor in Linux and I would make sure you have at least this knowledge of both so you can answer, it is fine to say nano because it's simple. At least you show competence in understanding what a text editor is. But get hands-on with them to be more proficient. </p>
+<p>Another pointer to navigate around in vim we can use <code>H,J,K,L</code> as well as our arrow keys. </p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=TmNa4y-K5Z8">VIM - Tutorial para principiantes - El MEJOR editor de texto - PeladoNerd)</a></li>
+<li><a href="https://www.youtube.com/watch?v=-txKSRn0qeA">Vim in 100 Seconds</a></li>
+<li><a href="https://www.youtube.com/watch?v=IiwGbcd8S7I">Vim tutorial</a></li>
+<li><a href="https://www.youtube.com/watch?v=kPylihJRG70">Learn the Linux Fundamentals - Part 1</a></li>
+</ul>
+<p>See you in the <a href="../day03-05/">Next Section</a></p>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day03-03/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day03-03/" class="btn btn-sm btn-link">
+			3. Managing your Linux System, Filesystem & Storage - Day 16
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day03-05/" class="btn btn-sm btn-link">
+			5. SSH & Web Server
+		</a>
+		<a href="../day03-05/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-04-20 14:54:44 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>

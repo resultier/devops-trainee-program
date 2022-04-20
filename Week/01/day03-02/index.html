@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>2. Linux Commands for DevOps (Actually everyone) - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "Linux Commands for DevOps (Actually everyone)", url: "#_top", children: [
+				]},
+				{title: "Commands", url: "#commands", children: [
+						
+				{title: "Permissions", url: "#_top", children: [
+				]},
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day03-01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day03-01/" class="btn btn-sm btn-link">
+			1. The Big Picture: DevOps and Linux
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day03-03/" class="btn btn-sm btn-link">
+			3. Managing your Linux System, Filesystem & Storage - Day 16
+		</a>
+		<a href="../day03-03/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			
+
+			<h2 id="linux-commands-for-devops-actually-everyone">Linux Commands for DevOps (Actually everyone)</h2>
+<p>We mentioned on the <a href="../day03-01/">Previous Section</a> that we are going to be spending a lot of time in the terminal. We will definitely want to get comfortable living in the terminal moving forward but there's nothing to be afraid of! In a short time, you'll find yourself being more productive in terminal and you'll get there with practice.</p>
+<p>I also mentioned that with our vagrant provisioned VM we can use <code>vagrant ssh</code> and gain access to our box. You will need to be in the same directory as we provisioned it from.</p>
+<p>For SSH you won't need the username and password, you will only need that if you decide to login to the Virtual Box console. </p>
+<p>This is where we want to be as per below: </p>
+<p><img alt="" src="../../../Images/day03-02-01.png" /></p>
+<p>Furthermore, if you'd like a small sandbox to test these linux commands you can also use an <a href="https://ssh.instantterminal.acloud.guru/">instant terminal</a> in the browser.</p>
+<h2 id="commands">Commands</h2>
+<p>Obviously I cannot cover all the commands here, there are  pages and pages of documentation that cover these but also if you are ever in your terminal and you just need to understand options to a specific command we have the <code>man</code> pages (short for manual). We can use this to go through each of the commands we touch on during this post to find out more options for each one. We can run <code>man man</code> which will give you the help for manual pages. To escape the man pages you should press <code>q</code> in order to quit from this screen. </p>
+<p><code>sudo</code> If you are familar with Windows and the right click <code>run as administrator</code> we can think of <code>sudo</code> as very much this. When you run a command with this command you will be running it as <code>root</code> it will prompt you for the password before running the command. This basically allows you to run any command with privileged levels and should be used with caution.</p>
+<p>For one off jobs like installing applications or services you might need that <code>sudo command</code> but what if you have several tasks to deal with and you want to live as <code>sudo</code> for a while? This is where you can use <code>sudo su</code> again the same as <code>sudo</code> once entered you will be prompted for your <code>root</code> password. In a test VM like ours this is fine but I would find it very hard for us to be rolling around as <code>root</code> for prolonged periods, bad things can happen. To get out of this elevated position you simply type in <code>exit</code> or use the shorcut <code>CTRL + D</code>.</p>
+<p>Using <code>clear</code> will help you to keep your terminal clean as we continue prompting more commands in terminal. This obviously can be ahieved by typing the <code>clear</code> command which is going to clear the screen of all previous commands, but you can also type <code>CTRL + L</code> (including MacOS) as a quick shortcut to achieve the same result.</p>
+<p>Let's now look at some commands where we can actually create things within our system and then visualise them in our terminal, first of all we have <code>mkdir</code> this will allow us to create a folder in our system. With the following command we can create a folder in our home directory called Week-01 <code>mkdir Week-01</code></p>
+<p>With <code>cd</code> this allows us to change directory, so for us to move into our newly created directory we can do this with <code>cd Week-01</code> tab can also be used to autocomplete the directory available. If we want to get back to where we started we can use <code>cd ..</code></p>
+<p><code>rmdir</code> allows for us to remove the directory, if we run <code>rmdir Week-01</code> then the folder will be removed (note that this will only work if you have nothing in the folder)</p>
+<p>I am sure we have all done it where we have navigated to the depths of our file system to a directory and not known where we are. <code>pwd</code> gives us the print out of the working directory, pwd as much as it looks like password it stands for print working directory. </p>
+<p>We know how to create folders and directories but how do we create files? We can create files using the <code>touch</code> command if we were to run <code>touch Week-01</code> this would create a file. Ignore <code>mkdir</code> we are going see this again later.</p>
+<p><code>ls</code> I can put my house on this, you will use this command so many times, this is going to list the all the files and folders in the current directory. Let's see if we can see that file we just created. </p>
+<p>How can we find files on our Linux system? <code>locate</code> is going to allow us to search our file system. If we use <code>locate Week-01</code> it will report back that location of the file. Bonus round is that if you know that the file does exist but you get a blank result then run <code>sudo updatedb</code> which will index all the files in the file system then run your <code>locate</code> again. If you do not have <code>locate</code> available to you, you can install it using this command <code>sudo apt install mlocate</code> </p>
+<p>What about moving files from one location to another? <code>mv</code> is going to allow you to move your files. Example <code>mv Week-01 DevOpsTraineeProgram</code> will move your file to the DevOpsTraineeProgram folder. </p>
+<p>We have moved our file but what if we want to rename it now to something else? We can do that using the <code>mv</code> command again... We can simply use <code>mv Week-01 Week-01</code> to change to upper case or we could use <code>mv Week-01 AnotherWeek</code> to change it altogether, now use <code>ls</code> to check the file. </p>
+<p>Enough is enough, let's now get rid (delete) of our file and maybe even our directory if we have one created. Introducing the <code>rm</code> command. Simply by running <code>rm AnotherWeek</code> will remove our file. We will also use quite a bit <code>rm -R</code> which will recursively work through a folder or location. We might also use <code>rm -R -f</code> to force the removal of all of those files. Be careful though! If you run <code>rm -R -f /</code> and you decide to add sudo at this specific command, you might as well say goodbye to your system! Always beware of the type of command you're running in terminal, specially when using a priviledged or elevated command with <code>sudo</code>. </p>
+<p>We have looked at moving files around but what if I just want to copy files from one folder to another, simply put its very similar to the <code>mv</code> command but we use <code>cp</code> (short for copy). We can now run the command <code>cp Week-01 Desktop</code> </p>
+<p>We have created folders and files but we haven't actually put any contents into our folder, we can add contents a few ways but an easy way is <code>echo</code> we can also use <code>echo</code> to print out a lot of things in our terminal, I personally use echo a lot to print out system variables to know if they are set or not at least. we can use <code>echo "Hello #DevOpsTraineeProgram" &gt; Week-01</code> and this will add this to our file. We can also append to our file using <code>echo "Commands are fun!" &gt;&gt; Week-01</code> </p>
+<p>Another one of those commands you will use a lot! <code>cat</code> short for concatenate. We can use <code>cat Week-01</code> to see the contents inside the file. Great for quickly reading those configuration files. </p>
+<p>If you have a long complex configuration file and you want or need to find something fast in that file vs reading every line then <code>grep</code> is your friend, this will allow us to search your file for a specific word using <code>cat Week-01 | grep "#DevOpsTraineeProgram"</code></p>
+<p>If you are like me and you use that <code>clear</code> command a lot then you might miss some of the commands previously ran, we can use <code>history</code> to find out all those commands we have run prior. <code>history -c</code> will remove the history. </p>
+<p>When you run <code>history</code> and you would like to pick a specific command you can use <code>!3</code> to choose the 3rd command in the list. </p>
+<p>You are also able to use <code>history | grep "Command</code> to search for something specific. </p>
+<p>On servers to trace back when was a command executed, it can be useful to append the date and time to each command in the history file.</p>
+<p>The following system variable controls this behaviour:</p>
+<pre><code>HISTTIMEFORMAT=&quot;%d-%m-%Y %T &quot;
+</code></pre>
+<p>You can easily add to your bash_profile:</p>
+<pre><code>echo 'export HISTTIMEFORMAT=&quot;%d-%m-%Y %T &quot;' &gt;&gt; ~/.bash_profile
+</code></pre>
+<p>So as useful to allow the history file grow bigger:</p>
+<pre><code>echo 'export HISTSIZE=100000' &gt;&gt; ~/.bash_profile
+echo 'export HISTFILESIZE=10000000' &gt;&gt; ~/.bash_profile
+</code></pre>
+<p>Need to change your password? <code>passwd</code> is going allow us to change our password. Note that when you add your password in like this when it is hidden it will not be shown in <code>history</code> however if your command has <code>-p PASSWORD</code> then this will be visible in your <code>history</code>. </p>
+<p>We might also want to add new users to our system, we can do this with <code>useradd</code> we have to add the user using our <code>sudo</code> command, we can add a new user with <code>sudo useradd NewUser</code></p>
+<p>Creating a group again requires <code>sudo</code> and we can use <code>sudo groupadd DevOps</code> then if we want to add our new user to that group we can do this by running <code>sudo usermod -a -G DevOps</code> <code>-a</code> is add and <code>-G</code> is group name. </p>
+<p>How do we add users to the <code>sudo</code> group, this would be a very rare occassion for this to happen but in order to do this it would be <code>usermod -a -G sudo NewUser</code> </p>
+<h3 id="permissions">Permissions</h3>
+<p>read, write and execute are the permissions we have on all of our files and folders on our Linux system. </p>
+<p>A full list: </p>
+<ul>
+<li>0 = None <code>---</code></li>
+<li>1 = Execute only <code>--X</code></li>
+<li>2 = Write only <code>-W-</code></li>
+<li>3 = Write &amp; Exectute <code>-WX</code></li>
+<li>4 = Read Only <code>R--</code></li>
+<li>5 = Read &amp; Execute <code>R-X</code></li>
+<li>6 = Read &amp; Write <code>RW-</code></li>
+<li>7 = Read, Write &amp; Execute <code>RWX</code></li>
+</ul>
+<p>You will also see <code>777</code> or <code>775</code> and these represent the same numbers as the list above but each one represents <strong>User - Group - Everyone</strong></p>
+<p>Let's take a look at our file. <code>ls -al Week-01</code> you can see the 3 groups mentioned above, user and group has read &amp; write but everyone only has read. </p>
+<p>We can change this using <code>chmod</code> you might find yourself doing this if you are creating binaries a lot on your systems as well and you need to give the ability to execute those binaries. <code>chmod 750 Week-01</code> now run <code>ls -al Week-01</code> if you want to run this for a whole folder then you can use <code>-R</code> to recursively do that. </p>
+<p>What about changing the owner of the file? We can use <code>chown</code> for this operation, if we wanted to change the ownership of our <code>Week-01</code> from user <code>vagrant</code> to <code>NewUser</code> we can run <code>sudo chown NewUser Week-01</code> again <code>-R</code> can be used. </p>
+<p>A command that you will come across is <code>awk</code> where this comes in real use is when you have an output that you only need specific data from. like running <code>who</code> we get lines with information, but maybe we only need the names. We can run <code>who | awk '{print $1}'</code> to get just a list of that first column. </p>
+<p>If you are looking to read streams of data from standard input, then generates and executes command lines; meaning it can take output of a command and passes it as argument of another command. <code>xargs</code> is a useful tool for this use case. If for example I want a list of all the Linux user accounts on the system I can run. <code>cut -d: -f1 &lt; /etc/passwd</code> and get the long list we see below. </p>
+<p>If we want to compact that list I can do so by using <code>xargs</code> in a command like this <code>cut -d: -f1 &lt; /etc/passwd | sort | xargs</code> </p>
+<p>I didn't mention the <code>cut</code> command either, this allows us to remove sections from each line of a file. It can be used to cut parts of a line by byte position, character and field. The <code>cut -d " " -f 2 list.txt</code> command allows us to remove that first letter we have and just display our numbers. There are so many combinations that can be used here with this command, I am sure I have spent too much time trying to use this command when I could have extracted data quicker manually. </p>
+<p>Also to note if you type a command and you are no longer with happy with it and you want to start again just hit control + c and this will cancel that line and start you fresh. </p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=kPylihJRG70">Learn the Linux Fundamentals - Part 1</a></li>
+<li><a href="https://www.youtube.com/watch?v=VbEx7B_PTOE">Linux for hackers (FREE Linux course for beginners)</a></li>
+</ul>
+<p>This is a pretty heavy list already but I can safely say that I have used all of these commands in our day to day, be it from an administering Linux servers or in my Linux Desktop, it is very easy when you are in Windows or macOS to navigate the UI but in Linux Servers they are not there, everything is done through the terminal. </p>
+<p>See you in the <a href="../day03-03/">Next Section</a></p>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day03-01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day03-01/" class="btn btn-sm btn-link">
+			1. The Big Picture: DevOps and Linux
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day03-03/" class="btn btn-sm btn-link">
+			3. Managing your Linux System, Filesystem & Storage - Day 16
+		</a>
+		<a href="../day03-03/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-04-20 14:54:44 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>1. The Big Picture: DevOps and Linux - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "The Big Picture: DevOps and Linux", url: "#_top", children: [
+				]},
+				{title: "Getting Started", url: "#getting-started", children: [
+				]},
+				{title: "Introducing HashiCorp Vagrant", url: "#introducing-hashicorp-vagrant", children: [
+				]},
+				{title: "Our first VAGRANTFILE", url: "#our-first-vagrantfile", children: [
+				]},
+				{title: "Provisioning our Linux Desktop", url: "#provisioning-our-linux-desktop", children: [
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day02-07/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day02-07/" class="btn btn-sm btn-link">
+			7. Tweet your progress with our new App
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day03-02/" class="btn btn-sm btn-link">
+			2. Linux Commands for DevOps (Actually everyone)
+		</a>
+		<a href="../day03-02/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			
+
+			<h2 id="the-big-picture-devops-and-linux">The Big Picture: DevOps and Linux</h2>
+<p>Linux and DevOps share very similar cultures and perspectives; both are focused on customization and scalability. Both of these aspects of Linux are of particular importance for DevOps.</p>
+<p>A lot of technologies start on Linux, especially if they are related to software development or managing infrastructure.</p>
+<p>As well lots of open source projects, especially DevOps tools, were designed to run on Linux from the start.</p>
+<p>From a DevOps perspective or in fact any operations role perspective you are going to come across Linux I would say mostly. There is a place for WinOps but the majority of the time you are going to be administering and deploying Linux servers. </p>
+<p>I have been using Linux on a daily basis for a number of years but my go to desktop machine has always been either macOS or Windows. However, when I moved into the Cloud Native role I am in now I took the plunge to make sure that my laptop was fully Linux based and my daily driver, whilst I still needed Windows for some work-based applications at times and a lot of my audio and video gear does not run on Linux I was forcing myself to run a Linux desktop full time to get a better grasp of a lot of the things we are going to touch on over the rest of the week. </p>
+<h2 id="getting-started">Getting Started</h2>
+<p>I am not suggesting you do the same as me by any stretch as there are easier options and less destructive but I will say taking that full-time step forces you to learn faster on how to make things work on Linux. </p>
+<p>For this section of this program, I am actually going to deploy a Virtual Machine in Virtual Box on my MacOS machine. I am also going to deploy a desktop version of a Linux distribution, whereas a lot of the Linux servers you will be administering will likely be servers that come with no GUI and everything is shell-based. However, as I said at the start a lot of the tools that we covered throughout this whole program started out on Linux I would also strongly encourage you to take the dive into running that Linux Desktop for that learning experience as well. </p>
+<p>For the rest of this section, we are going to concentrate on getting a Ubuntu Desktop virtual machine up and running in our Virtual Box environment. Now we could just download <a href="https://www.virtualbox.org/">Virtual Box</a> and grab the latest <a href="https://ubuntu.com/download">Ubuntu ISO</a> from the sites linked and go ahead and build out our desktop environment but that wouldn't be very DevOps of us, would it? </p>
+<p>Another good reason to use most Linux distributions is that they are free and open-source. We are also choosing Ubuntu as it is probably the most widely used distribution deployed not thinking about mobile devices and enterprise RedHat Enterprise servers.</p>
+<h2 id="introducing-hashicorp-vagrant">Introducing HashiCorp Vagrant</h2>
+<p>Vagrant is a CLI utility that manages the lifecycle of your virtual machines. We can use vagrant to spin up and down virtual machines across many different platforms including vSphere, Hyper-v, Virtual Box and also Docker. It does have other providers but we will stick with that we are using Virtual Box here so we are good to go. </p>
+<p>The first thing we need to do is get Vagrant installed on our machine, when you go to the downloads page you will see all the operating systems listed for your choice. <a href="https://www.vagrantup.com/downloads">HashiCorp Vagrant</a> In this section I'll be using Windows however if you run MacOS you should be able to install it on your system using brew (<code>brew install vagrant</code>) which would be the equivalent to <code>apt-get install</code> on Linux distributions.</p>
+<p>Next up we also need to get <a href="https://www.virtualbox.org/wiki/Downloads">Virtual Box</a> installed. Again this can also be installed on many different operating systems again a good reason to choose this and vagrant is that even if you are running Windows, macOS, or Linux then we have you covered here. </p>
+<p>Something to note that if you're using an M1 Macbook, virtualbox won't be compatible for installation as this only functions on ARM and Intel architecture.</p>
+<p>Both installations are pretty straightforward. If you have issues both have great communities around them also feel free to reach out or send a message through slack to further assist you!</p>
+<p>On MacOS you may run the following command as long as you're using a Mac Intel for now.</p>
+<p><code>brew install virtualbox</code></p>
+<h2 id="our-first-vagrantfile">Our first VAGRANTFILE</h2>
+<p>The VAGRANTFILE describes the type of machine we want to deploy. It also defines how we want the configuration and provisioning of this machine need to look. </p>
+<p>When it comes to saving these and organizing your VAGRANTFILEs I tend to put them in their own folders in my workspace. You can see below how this looks on my system. Hopefully following this you will play around with Vagrant and see the ease of spinning up different systems, it is also great for that rabbit hole is known as distro hopping for Linux Desktops. </p>
+<p><img alt="" src="../../../Images/day03-01-01.png" /></p>
+<p>Let's take a look at that VAGRANTFILE then and see what we are building. </p>
+<pre><code>
+Vagrant.configure(&quot;2&quot;) do |config|
+
+  config.vm.box = &quot;chenhan/ubuntu-desktop-20.04&quot;
+
+  config.vm.provider :virtualbox do |v|
+
+   v.memory  = 8096
+
+   v.cpus    = 4
+
+   v.customize [&quot;modifyvm&quot;, :id, &quot;--vram&quot;, &quot;128mb&quot;]
+
+end
+
+end
+
+</code></pre>
+<p>This is a very simple VAGRANTFILE overall we are saying we want a specific "box" a box being possibly either a public image or private build of the system you are looking for. You can find a long list of "boxes" publicly available here in the <a href="https://app.vagrantup.com/boxes/search">public catalog of Vagrant boxes</a> </p>
+<p>Next line we are saying we want to use a specific provider in this case it is <code>VirtualBox</code> and then we want to define our machine's memory to <code>8GB and our number of CPUs to</code>4<code>. My experience also tells me that you may want to also add the following line if you experience display issues. This will set the video memory to what you want, I would ramp this right up to</code>128MB but depends on your system. </p>
+<pre><code>
+v.customize [&quot;modifyvm&quot;, :id, &quot;--vram&quot;, &quot;&quot;]
+
+</code></pre>
+<p>I have also placed a copy of this specific vagrant file in the <a href="Linux/VAGRANTFILE">Linux Folder</a> </p>
+<h2 id="provisioning-our-linux-desktop">Provisioning our Linux Desktop</h2>
+<p>We are now ready to get our first machine up and running, in your workstations terminal. In my case I am using PowerShell on my Windows machine, navigate to your projects folder and where you will find your VAGRANTFILE. Once there you can type the command <code>vagrant up</code> and if everything is correct then you will see something like the below.  </p>
+<p><img alt="" src="../../../Images/day03-01-02.png" /></p>
+<p>Another thing to add here is that the network will be set to <code>NAT</code> on your virtual machine, at this stage we don't really need to know about NAT and I plan to have a whole session talking about in the next section about Networking. But know that it is the easy button when it comes to getting a machine on your home network, it is also the default networking mode on Virtual Box. You can find out more in the <a href="https://www.virtualbox.org/manual/ch06.html#network_nat">Virtual Box documentation</a></p>
+<p>Once <code>vagrant up</code> is complete we can now use <code>vagrant ssh</code> to jump straight into the terminal of our new VM. </p>
+<p><img alt="" src="../../../Images/day03-01-03.png" /></p>
+<p>This is where we will do most of our exploring over the next few days but I also want to dive into some customizations for your developer workstation that I have done and it makes your life much simpler when running this as your daily driver, and of course, are you really in DevOps unless you have a cool nonstandard terminal? </p>
+<p>But just to confirm in Virtual Box you should see the login prompt when you select your VM. </p>
+<p><img alt="" src="../../../Images/day03-01-04.png" /></p>
+<p>Oh and if you made it this far and you have been asking "WHAT IS THE USERNAME &amp; PASSWORD?" </p>
+<ul>
+<li>
+<p>Username = vagrant </p>
+</li>
+<li>
+<p>Password = vagrant </p>
+</li>
+</ul>
+<p>Next we are going to get into some of the commands and what they do, The terminal is going to be the place to make everything happen.  </p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=kPylihJRG70">Learn the Linux Fundamentals - Part 1</a></li>
+<li><a href="https://www.youtube.com/watch?v=VbEx7B_PTOE">Linux for hackers (don't worry you don't need be a hacker!)</a></li>
+</ul>
+<p>There are going to be lots of resources I find as we go through and much like the Go resources I am generally going to be keeping them to FREE content so we can all partake and learn here. </p>
+<p>As I mentioned next up we will take a look at the commands we might be using on a daily whilst in our Linux environments. </p>
+<p>See you in the <a href="../day03-02/">Next Section</a></p>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day02-07/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day02-07/" class="btn btn-sm btn-link">
+			7. Tweet your progress with our new App
+		</a>
+	</div>
+	
+
+	
+	<div class="col-sm text-center text-sm-right">
+		<a href="../day03-02/" class="btn btn-sm btn-link">
+			2. Linux Commands for DevOps (Actually everyone)
+		</a>
+		<a href="../day03-02/" class="btn btn-sm btn-outline-dark">
+			Next
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+		</a>
+	</div>
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-04-20 14:54:44 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>

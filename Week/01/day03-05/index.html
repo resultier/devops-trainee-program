@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>5. SSH & Web Server - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "SSH \u0026amp; Web Server", url: "#_top", children: [
+						
+				{title: "SSH introduction", url: "#_top", children: [
+				]},
+				{title: "Adding a bridged network adapter to our system", url: "#adding-a-bridged-network-adapter-to-our-system", children: [
+				]},
+				{title: "Confirming SSH server is running", url: "#confirming-ssh-server-is-running", children: [
+				]},
+				{title: "Remote Access - SSH Password", url: "#remote-access-ssh-password", children: [
+				]},
+				{title: "Remote Access - SSH Key", url: "#remote-access-ssh-key", children: [
+				]},
+				]},
+				{title: "Setting up a Web Server", url: "#setting-up-a-web-server", children: [
+						
+				{title: "Apache2", url: "#_top", children: [
+				]},
+				{title: "mySQL", url: "#mysql", children: [
+				]},
+				{title: "PHP", url: "#php", children: [
+				]},
+				{title: "WordPress Installation", url: "#wordpress-installation", children: [
+				]},
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day03-04/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day03-04/" class="btn btn-sm btn-link">
+			4. Text Editors - Nano vs Vim
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			
+
+			<h2 id="ssh-web-server">SSH &amp; Web Server</h2>
+<p>As we have mentioned throughout you are going to most likely be managing lots of remote Linux servers, because of this, you will need to make sure that your connectivity to these remote servers is secure. In this section, we want to cover some of the basics of SSH that everyone should know that will help you with that secure tunnel to your remote systems. </p>
+<ul>
+<li>Setting up a connection with SSH </li>
+<li>Transferring files </li>
+<li>Create your private key</li>
+</ul>
+<h3 id="ssh-introduction">SSH introduction</h3>
+<ul>
+<li>Secure shell </li>
+<li>Networking Protocol </li>
+<li>Allows secure communications </li>
+<li>Can secure any network service </li>
+<li>Typically used for remote command-line access </li>
+</ul>
+<p>In our environment, if you have been following along we have been using SSH already but this was all configured and automated through our vagrant configuration so we only had to run <code>vagrant ssh</code> and we gained access to our remote virtual machine. </p>
+<p>If our remote machine was not on the same system as our workstation and was in a remote location, maybe a cloud-based system or running in a data centre that we could only access over the internet we would need a secure way of being able to access the system to manage it.</p>
+<p>SSH provides a secure tunnel between client and server so that nothing can be intercepted by bad actors. </p>
+<p><img alt="" src="../../../Images/day03-05-01.png" /></p>
+<p>The server has a server-side SSH service always running and listening on a specific TCP port (22). </p>
+<p>If we use our client to connect with the correct credentials or SSH key then we gain access to that server. </p>
+<h3 id="adding-a-bridged-network-adapter-to-our-system">Adding a bridged network adapter to our system</h3>
+<p>In order for us to use this with our current virtual box VM, we need to add a bridged network adapter to our machine. </p>
+<p>Power down your virtual machine, right-click on your machine within Virtual Box and select settings. In the new window then select networking. </p>
+<p><img alt="" src="../../../Images/day03-05-02.png" /></p>
+<p>Now power your machine back on and you will now have an IP address on your local machine. You can confirm this with the <code>ip addr</code> command. </p>
+<h3 id="confirming-ssh-server-is-running">Confirming SSH server is running</h3>
+<p>We know SSH is already configured on our machine as we have been using it with vagrant but we can confirm by running </p>
+<p><code>sudo systemctl status ssh</code></p>
+<p><img alt="" src="../../../Images/day03-05-03.png" /></p>
+<p>If your system does not have the SSH server then you can install it by issuing this command <code>sudo apt install openssh-server</code> </p>
+<p>You then want to make sure that our SSH is allowed if the firewall is running. We can do this with <code>sudo ufw allow ssh</code> this is not required on our configuration as we automated this with our vagrant provisioning. </p>
+<h3 id="remote-access-ssh-password">Remote Access - SSH Password</h3>
+<p>Now that we have our SSH Server listening out on port 22 for any incoming connection requests and we have added the bridged networking we could use putty or an SSH client on our local machine to connect into our system using SSH. </p>
+<p>For Windows, you may use PuTTY:</p>
+<p><img alt="" src="../../../Images/day03-05-04.png" /></p>
+<p>However, I do still highly recommend using Linux based system as they're easy to connect out of the box through terminal with the <code>ssh</code> command.</p>
+<p>Then hit open, if this is the first time you have connected to this system via this IP address you will get this warning. We know that this is our system so you can choose yes. </p>
+<p>We are then prompted for our username (vagrant) and password (default password - vagrant) Below you will see we are now using our SSH client (Putty) to connect to our machine using username and password. </p>
+<p><img alt="" src="../../../Images/day03-05-05.png" /></p>
+<p>At this stage, we are connected to our VM from our remote client and we can issue our commands on our system. </p>
+<h3 id="remote-access-ssh-key">Remote Access - SSH Key</h3>
+<p>The above is an easy way to gain access to your systems however it still relies on username and password, if some malicious actor was to gain access to this information plus the public address or IP of your system then it could be easily compromised. This is where SSH keys are preferred. </p>
+<p>SSH Keys means that we provide a key pair so that both the client and server know that this is a trusted device. </p>
+<p>Creating a key is easy. On our local machine (Windows) We can issue the following command in fact if you have an ssh-client installed on any system I believe this same command should work. </p>
+<p><code>ssh-keygen -t ed25519</code></p>
+<p>Alternatively, depending on the system you may want to create an RSA key instead.</p>
+<p><code>ssh-keygen -t rsa</code></p>
+<p>I am not going to get into what <code>ed25519</code> or RSA is and means here but you can have a search if you want to learn more about <a href="https://en.wikipedia.org/wiki/EdDSA#Ed25519">cryptography</a> or you can read more about the difference between both of them on the following resource:
+- <a href="https://crypto.stackexchange.com/questions/1978/how-big-an-rsa-key-is-considered-secure-today/1982#1982">Is RSA key considered secure today?</a></p>
+<p>At this point we have our created SSH key stored in <code>C:\Users\admin/.ssh/</code></p>
+<p>But in order to link this with our Linux VM we need to copy the key. We can do this by using the <code>ssh-copy-id vagrant@192.168.169.135</code></p>
+<p>I used Powershell to create my keys on the Windows client here but there is no <code>ssh-copy-id</code> available. There are ways in which you can do this on Windows and a small search online will find you an alternative, but I will just use git bash on the Windows machine to make the copy. </p>
+<p>We can now go back to Powershell to test that our connection now works with our SSH Keys and no password is required. </p>
+<p><code>ssh vagrant@192.168.169.135</code></p>
+<p>We could secure this further if needed by using a passphrase. We could also go one step further saying that no passwords at all meaning only key pairs over SSH would be allowed. You can make this happen in the following configuration file. </p>
+<p><code>sudo vi /etc/ssh/sshd_config</code> </p>
+<p>there is a line in here with <code>PasswordAuthentication yes</code> this will be <code>#</code> commented out, you should uncomment and change the yes to no. You will then need to reload the SSH service with <code>sudo systemctl reload sshd</code> </p>
+<h2 id="setting-up-a-web-server">Setting up a Web Server</h2>
+<p>Not specifically related to what we have just done with SSH above but I wanted to include this as this is again another task that you might find a little daunting but it really should not be. </p>
+<p>We have our Linux playground VM and at this stage, we want to add an apache webserver to our VM so that we can host a simple website from it that serves out to my home network. Note that this web page will not be accessible from the internet, this can be done but it will not be covered here.  </p>
+<p>You might also see this referred to as a LAMP stack. </p>
+<ul>
+<li><strong>L</strong>inux Operating System </li>
+<li><strong>A</strong>pache Web Server </li>
+<li><strong>m</strong>ySQL database </li>
+<li><strong>P</strong>HP</li>
+</ul>
+<h3 id="apache2">Apache2</h3>
+<p>Apache2 is an open-source HTTP server. We can install apache2 with the following command.</p>
+<p><code>sudo apt-get install apache2</code></p>
+<p>To confirm that apache2 is installed correctly we can run <code>sudo service apache2 restart</code></p>
+<p>Then using the bridged network address from the SSH walkthrough open a browser and go to that address but for this section. </p>
+<p>Furthermore feel free to reach out over <a href="https://resultier.slack.com/team/U0341U2JHEJ">slack</a>!</p>
+<p>In this case, we can deploy an instant cloud sandbox for you to work on it without the need to install anything on your local machine. Everything through the cloud!</p>
+<p><img alt="" src="../../../Images/day03-05-06.png" /></p>
+<h3 id="mysql">mySQL</h3>
+<p>MySQL is a database in which we will be storing our data for our simple website. To get MySQL installed we should use the following command <code>sudo apt-get install mysql-server</code></p>
+<h3 id="php">PHP</h3>
+<p>PHP is a server-side scripting language, we will use this to interact with a MySQL database. The final installation is to get PHP and dependencies installed using <code>sudo apt-get install php libapache2-mod-php php-mysql</code> </p>
+<p>The first configuration change we want to make it out of the box apache is using index.html and we want it to use index.php instead. </p>
+<p>We are going to use <code>sudo nano /etc/apache2/mods-enabled/dir.conf</code> and we are going to move index.php to the first item in the list. </p>
+<p>Restart the apache2 service <code>sudo systemctl restart apache2</code></p>
+<p>Now let's confirm that our system is configured correctly for PHP. Create the following file using this command, this will open a blank file in nano. </p>
+<p><code>sudo nano /var/www/html/90Days.php</code></p>
+<p>then copy the following and use control + x to exit and save your file. </p>
+<pre><code>&lt;?php
+phpinfo();
+?&gt;
+</code></pre>
+<p>Now navigate to your Linux VM IP again with the additional DevopsTraining.php on the end of the URL. <code>http://192.168.169.135/DevopsTraining.php</code> you should see something similar to the below if PHP is configured correctly. </p>
+<h3 id="wordpress-installation">WordPress Installation</h3>
+<p>I then walked through this tutorial to get WordPress up on our LAMP stack, some commands are shown below if not shown correctly in the walkthrough <a href="https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-on-ubuntu-20-04-with-a-lamp-stack">How to install wordpress on Ubuntu with LAMP</a></p>
+<pre><code class="language-mysql">`sudo mysql -u root -p`
+
+`CREATE DATABASE wordpressdb;`
+
+`CREATE USER 'admin-user'@'localhost' IDENTIFIED BY 'password';`
+
+`GRANT ALL PRIVILEGES ON wordpressdb.* TO 'admin-user'@'localhost';`
+
+`FLUSH PRIVILEGES;`
+
+`EXIT;`
+
+`sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip`
+
+`sudo systemctl restart apache2`
+
+`cd /var/www`
+
+`sudo curl -O https://wordpress.org/latest.tar.gz`
+
+`sudo tar -xvf latest.tar.gz`
+
+`sudo rm latest.tar.gz`
+</code></pre>
+<p>At this point you are Step 4 in the linked article, you will need to follow the steps to make sure all correct permissions are in place for the WordPress directory. </p>
+<p>Because this is internal only you do not need to "generate security keys" in this step. Move to Step 5 which is changing the Apache configuration to WordPress. </p>
+<p>Then providing everything is configured correctly you will be able to access via your internal network address and run through the WordPress installation. </p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://remmina.org/">Client SSH GUI - Remmina</a></li>
+<li><a href="https://www.youtube.com/watch?v=2QXkrLVsRmk">The Beginner's guide to SSH</a></li>
+</ul>
+<p>See you in the <a href="../../../home/">Next Section</a> 🚧</p>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day03-04/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day03-04/" class="btn btn-sm btn-link">
+			4. Text Editors - Nano vs Vim
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-04-20 14:54:44 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>
