@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>6. Bonus Challenge - Automating our LAMP Setup - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "Bash all the things.", url: "#_top", children: [
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day03-05/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day03-05/" class="btn btn-sm btn-link">
+			5. SSH & Web Server
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			
+
+			<h3 id="bash-all-the-things">Bash all the things.</h3>
+<p>First off, I would like to start of with this bonus lesson on working our way with automating what we did on our previous exercises.</p>
+<p>As you may recall, we started working on deploying a LAMP stack on a cloud environment and worked our way through to setup a wordpress installation in our envinronment.</p>
+<p>With this small exercises we have now learned what is a LAMP stack:</p>
+<ul>
+<li>L inux</li>
+<li>A pache</li>
+<li>M ySQL</li>
+<li>P HP</li>
+</ul>
+<p>We also learned how to deploy WordPress using wp-cli which basically allows you to install, manage and configure a WordPress installation through the command line interface (CLI).</p>
+<p>With this new gained knowledge, it is important that we start noting down every successful command that we were able to run on our environment and start automating things.</p>
+<p>With the next challenge we will need the following:</p>
+<ol>
+<li>List every command that we ran on our previous challenge. (Hint: review all the commands you used to install the LAMP stack first)</li>
+<li>Define your routes and Apache configuration you will be using.</li>
+<li>Create a Bash script that helps you install everything you need by running:</li>
+</ol>
+<pre><code class="language-bash">chmod +x lamp_and_wordpress_install.sh
+./lamp_and_wordpress_install.sh
+</code></pre>
+<p>Here's a small boilerplate to get you going:</p>
+<pre><code class="language-bash">#!/bin/bash
+# Script author: Carlos Romero
+# Script date: 24-feb-2020
+# Script ver: 1.0
+# Script use to install LAMP stack on Ubuntu 18.04 bionic
+#--------------------------------------------------
+# Software version:
+# 1. OS: Ubuntu 18.04.5 LTS 64 bit
+# 2. Nginx: 1.14.2
+# 3. MySQL: 10.3.13
+# 4. PHP 7: 7.3.2-3+ubuntu16.04.1+deb.sury.org+1
+#--------------------------------------------------
+# List function:
+# 1. f_check_root: check to make sure script can be run by user root
+# 2. f_update_os: update all the packages
+# 3. f_install_lamp: funtion to install LAMP stack
+# 4. f_sub_main: function use to call the main part of installation
+# 5. f_main: the main function, add your functions to this place
+
+# Function check user root
+f_check_root () {
+    if (( $EUID == 0 )); then
+        # If user is root, continue to function f_sub_main
+        f_sub_main
+    else
+        # If user not is root, print message and exit script
+        echo &quot;Please run this script by user root !&quot;
+        exit
+    fi
+}
+
+# Function update os
+f_update_os () {
+    echo &quot;Starting update os ...&quot;
+    echo &quot;&quot;
+    sleep 1
+    apt-get update
+    apt-get upgrade -y
+    echo &quot;&quot;
+    sleep 1
+}
+
+# Function install LAMP stack
+f_install_lamp () {
+    ########## INSTALL APACHE ##########
+    echo &quot;Starting Apache installation process ...&quot;
+    echo &quot;&quot;
+    sleep 1
+
+    # Install and start Apache
+    echo &quot;&quot;
+    echo &quot;Installing Apache ...&quot;
+    echo &quot;&quot;
+    sleep 1
+    apt install apache2 -y
+    systemctl enable apache2 &amp;&amp; systemctl start apache2
+    echo &quot;&quot;
+    sleep 1
+
+    ########## INSTALL MYSQL##########
+    echo &quot;Start install MySQL server ...&quot;
+    echo &quot;&quot;
+    sleep 1
+
+    echo &quot;Installing MySQL server ...&quot;
+    echo &quot;&quot;
+    sleep 1
+    sudo apt-get -y install mysql-server;
+    systemctl enable mysql &amp;&amp; systemctl start mysql
+    echo &quot;&quot;
+    sleep 1
+
+    # # Install PHPmyAdmin info (BONUS CHALLENGE)
+    # # https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-with-nginx-on-an-ubuntu-18-04-server
+    # echo &quot;Installing PHPmyAdmin ...&quot;
+    # echo &quot;&quot;
+    # sleep 1
+    # 
+    # 
+    # 
+    # 
+
+
+    # Install Certbot (Read about this)
+    # echo &quot;Installing Certbot ...&quot;
+    # echo &quot;&quot;
+    # sleep 1
+    # sudo add-apt-repository -y ppa:certbot/certbot
+    # sudo apt install -y certbot python-certbot-nginx
+    # echo &quot;&quot;
+    # sleep 1
+
+    ########## INSTALL PHP ##########
+    echo &quot;Add and install PHP...&quot;
+    echo &quot;&quot;
+    sleep 1
+    # &gt;&gt;&gt;&gt;&gt; ADD YOUR CODE HERE &lt;&lt;&lt;&lt;&lt;
+
+    ##################################
+
+#     # Create demo Apache vhost config file
+#     echo &quot;Create demo Apache vHost config file ...&quot;
+#     echo &quot;&quot;
+#     sleep 1
+#     cat &gt; /etc/apache2/sites-available/example.domain.conf &lt;&lt;&quot;EOF&quot;
+# 
+#   &lt;VirtualHost *:80&gt;
+#        ServerAdmin admin@resultier.com
+#        ServerName xxx.resultier.dev
+#        ServerAlias www.xxx.resultier.dev
+#        DocumentRoot /var/www/xxx.resultier.dev/public
+#
+#        &lt;Directory /var/www/xxx.resultier.dev/public/&gt;
+#            Options Indexes FollowSymLinks
+#            AllowOverride All
+#            Require all granted
+#        &lt;/Directory&gt;
+#
+#        ErrorLog ${APACHE_LOG_DIR}/error.log
+#        CustomLog ${APACHE_LOG_DIR}/access.log combined
+#
+#        &lt;IfModule mod_dir.c&gt;
+#            DirectoryIndex index.php index.pl index.cgi index.html index.xhtml index.htm
+#        &lt;/IfModule&gt;
+#   &lt;/VirtualHost&gt;
+# EOF
+
+#     echo &quot;&quot;
+#     echo &quot;You can access http://YOUR-SERVER-IP/info.php to see more informations about PHP&quot;
+#     sleep 1
+}
+
+# The sub main function, use to call neccessary functions of installation
+f_sub_main () {
+    f_update_os
+    f_install_lamp
+    exit
+}
+
+# The main function
+f_main () {
+    f_check_root
+    f_sub_main
+}
+f_main
+exit
+</code></pre>
+<p>Once finished, feel free to send me a ping on our slack channel so we can test and review your script.</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=I4EWvMFj37g">Bash in 100 seconds</a></li>
+<li><a href="https://www.youtube.com/watch?v=TPRSJbtfK4M">Bash script with practical examples - Full Course</a></li>
+<li><a href="https://remmina.org/">Client SSH GUI - Remmina</a></li>
+<li><a href="https://www.youtube.com/watch?v=2QXkrLVsRmk">The Beginner's guide to SSH</a></li>
+<li><a href="https://www.youtube.com/watch?v=-txKSRn0qeA">Vim in 100 Seconds</a></li>
+<li><a href="https://www.youtube.com/watch?v=IiwGbcd8S7I">Vim tutorial</a></li>
+<li><a href="https://www.youtube.com/watch?v=kPylihJRG70">Learn the Linux Fundamentals - Part 1</a></li>
+</ul>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day03-05/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day03-05/" class="btn btn-sm btn-link">
+			5. SSH & Web Server
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-04-26 16:44:00 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>
