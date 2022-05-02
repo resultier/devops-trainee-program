@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>Dev workstation setup - All the pretty things - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "Dev workstation setup - All the pretty things", url: "#_top", children: [
+						
+				{title: "1. New terminal", url: "#_top", children: [
+				]},
+				{title: "2. Themes", url: "#2-themes", children: [
+				]},
+				{title: "3. Dotfiles", url: "#3-dotfiles", children: [
+				]},
+				{title: "4. Software Installation", url: "#4-software-installation", children: [
+				]},
+				{title: "5. Fonts", url: "#5-fonts", children: [
+				]},
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day06-01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day06-01/" class="btn btn-sm btn-link">
+			6. Automate tasks with bash scripts
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			
+
+			<h2 id="dev-workstation-setup-all-the-pretty-things">Dev workstation setup - All the pretty things</h2>
+<p>This is not to be confused with setting up Linux servers but this is actually about setting up your environment to a state where you can make it your own. Give it a little bit of style here and there, but most importantly make it yours.</p>
+<p>I will be sharing a few of my favourite resources and tips to get your environment in a good direction.</p>
+<h3 id="1-new-terminal">1. New terminal</h3>
+<p>I recommend trying out new terminals on your workstation. If you are on windows, I highly recommend installing <a href="https://docs.microsoft.com/en-us/windows/wsl/install">WSL</a>. This allows you to install a subset system of Linux directly ontop of your Windows machine! As always, feel free to check out the resources on this section if you need some sort of guidance or tutorial on how to get this up and running.</p>
+<p>If you're on MacOS, I recommend switching from the regular terminal into <a href="https://iterm2.com/">iTerm2</a>. This terminal has many useful features and comes with <a href="https://ohmyz.sh/">OhMyZsh</a> pre-installed.</p>
+<p>Another useful tool or terminal that I love using is <a href="https://hyper.is/">HyperJS</a>. This terminal is an eletron-based terminal built on HTML Javascript. A very customizable terminal which can be a good alternative specially for Windows power users.</p>
+<h3 id="2-themes">2. Themes</h3>
+<p>Freel free to find something that makes your workspace <em>pop</em>. There's plenty of themes out there but one of my favourites is <a href="https://draculatheme.com/">Dracula Theme</a>. This one has installation instructions to basically anything you want to throw it at. Let it be VScode, Slack, VIM, etc. Perfect for cases where you want to keep one same aesthetic across your apps and devices. </p>
+<p>Feel free to look at the resources section if you'd like to learn a bit more on this.</p>
+<h3 id="3-dotfiles">3. Dotfiles</h3>
+<p>It is important to start building your own dotfiles. Dotfiles are configuration files for various programs, and they help those programs manage their functionality. What sets them apart from regular files and directories is their prefix. Dotfiles are named that way because each file and directory starts with a dot ( . )</p>
+<p>You'll find a curated list of dotfiles <a href="https://github.com/webpro/awesome-dotfiles">here</a> which has configuration for several different programs where you can start off and mix and match to your liking. However, feel free to find other resources on this if you'd like to dig deeper on customization and if you want to apply further workflows and shortcuts on your terminal. Really, your imagination is your limit here.</p>
+<h3 id="4-software-installation">4. Software Installation</h3>
+<p>A short list of the programs I install on the machine using <code>apt</code> or <code>brew</code></p>
+<pre><code>- VSCode 
+- awscli 
+- containerd.io
+- docker
+- docker-ce 
+- iTerm2
+- terraform
+</code></pre>
+<p>Feel free to experiment and share any new findings with the team!</p>
+<h3 id="5-fonts">5. Fonts</h3>
+<p>If you're someone who enjoys customizing everything, including fonts... then I do recommend getting a nice-to-read font that includes font ligatures!</p>
+<p><img alt="" src="https://www.jetbrains.com/webstorm/guide/static/b3a6c5e73b05f5d88e0361bb32dc6e74/tip.jpeg" /></p>
+<p><a href="https://www.jetbrains.com/lp/mono/">Jetbrains Mono</a> has a very decent one that is completely free. You can set this up to be included into your IDEs such as VScode as well as your terminal needs. There's plenty of different fonts out there, some are free and some are paid but feel free to experiment and choose whatever works best for you.</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=zE0hno3vV9M">Intro to Vim Customization | Configuration and Plugins</a></li>
+<li><a href="https://www.youtube.com/watch?v=eAfUfKYcvBo">Senior Developer Workflow For Stress-Free Coding</a></li>
+<li><a href="https://www.youtube.com/watch?v=r_MpUP6aKiQ">~/.dotfiles in 100 seconds</a></li>
+<li><a href="https://www.youtube.com/watch?v=sSOfr2MtRU8">Dev Workflow using tmux and vim</a></li>
+<li><a href="https://www.youtube.com/watch?v=MAkqbK7nMg8">Linux Developer Workflow</a></li>
+<li><a href="https://www.youtube.com/watch?v=LQlnsoaUSmY">Install JetBrains Mono Font in VSCode</a></li>
+</ul>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day06-01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day06-01/" class="btn btn-sm btn-link">
+			6. Automate tasks with bash scripts
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-05-02 14:31:07 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>
