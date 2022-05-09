@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>#DevOpsTraineeProgram - Network Protocols - Day 23 - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "Network Protocols", url: "#_top", children: [
+						
+				{title: "Subnetting", url: "#_top", children: [
+				]},
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day01-02/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day01-02/" class="btn btn-sm btn-link">
+			The OSI Model - The 7 Layers
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			
+
+			<h2 id="network-protocols">Network Protocols</h2>
+<p>A set of rules and messages that form a standard. An Internet Standard. </p>
+<ul>
+<li>ARP - Address Resolution Protocol </li>
+</ul>
+<p>If you want to get really into the weeds on ARP you can read the Internet Standard here. <a href="https://datatracker.ietf.org/doc/html/rfc826">RFC 826</a> </p>
+<p>Connects IP addresses to fixed physical machine addresses, also known as MAC addresses across a layer 2 network. </p>
+<p><img alt="" src="../../../Images/week02/day02-01-01.png" /></p>
+<ul>
+<li>FTP - File Transfer Protocol </li>
+</ul>
+<p>Allows for the transfer of files from source to destination. Generally this process is authenticated but there is the ability if configured to use anonymous access. You will more frequently now see FTPS which provides SSL/TLS connectivity to FTP servers from the client for better security. This protocol would be found in the Application layer of the OSI Model. </p>
+<p><img alt="" src="../../../Images/week02/day02-01-02.png" /></p>
+<ul>
+<li>SMTP - Simple Mail Transfer Protocol </li>
+</ul>
+<p>Used for email transmission, mail servers use SMTP to send and recieve mail messages. You will still find even with Microsoft 365 that the SMTP protocol is used for the same purpose. </p>
+<p><img alt="" src="../../../Images/week02/day02-01-03.png" /></p>
+<ul>
+<li>HTTP - Hyper Text Transfer Protocol </li>
+</ul>
+<p>HTTP is the foundation of the internet and browsing content. Giving us the ability to easily access our favourite websites. HTTP is still heavily used but HTTPS is more so used or should be used on most of your favourite sites. </p>
+<p><img alt="" src="../../../Images/week02/day02-01-04.png" /></p>
+<ul>
+<li>SSL - Secure Sockets Layer | TLS - Transport Layer Security </li>
+</ul>
+<p>TLS has taken over from SSL, TLS is a <a href="">Cryptographic Protocol</a> that provides security communications over a network. It can and will be found in mail, im and other applications but most commonly it is used to secure HTTPS.  </p>
+<p><img alt="" src="../../../Images/week02/day02-01-05.png" /></p>
+<ul>
+<li>HTTPS - HTTP secured with SSL/TLS </li>
+</ul>
+<p>An extension of HTTP, used for secure communications over a network, HTTPS is encrypted with TLS as mentioned above. The focus here was to bring authenticaion, privacy and integrity whilst data is exchanged between hosts. </p>
+<p><img alt="" src="../../../Images/week02/day02-01-06.png" /></p>
+<ul>
+<li>DNS - Domain Name System </li>
+</ul>
+<p>The DNS is used to map human-freindly domain names for example we all know <a href="https://google.com">google.com</a> but if you were to open a browser and put in <a href="https://8.8.8.8">8.8.8.8</a> you would get Google as we pretty much know it. However good luck trying to remember all of the IP addresses for all of your websites where some of them we even use google to find information. </p>
+<p>This is where DNS comes in, it ensures that hosts, services and other resources are reachable. </p>
+<p>On all hosts, if they require internet connectivity then they must have DNS to be able to resolve those domain names. DNS is an area you could spend Days and Years on learning. I would also say from experience that DNS is mostly the common cause of all errors when it comes to Networking. Not sure if a Network engineer would agree there though. </p>
+<p><img alt="" src="../../../Images/week02/day02-01-07.png" /></p>
+<ul>
+<li>DHCP - Dynamic Host Configuration Protocol </li>
+</ul>
+<p>We have discussed a lot about protocols that are required to make our hosts work, be it accessing the internet or transferring files between each other. </p>
+<p>There are 4 things that we need on every host for it to be able to achieve both of those tasks. </p>
+<ul>
+<li>IP Address </li>
+<li>Subnet Mask </li>
+<li>Default Gateway </li>
+<li>DNS </li>
+</ul>
+<p>We have covered IP address being a unique address for your host on the network it resides, we can think of this as our house number. </p>
+<p>Subnet mask we will cover shortly, but you can think of this as post code or zip code. </p>
+<p>Default gateway is the IP of our router generally on our network providing us with that Layer 3 connectivity. You could think of this as the single road that allows us out of our street.  </p>
+<p>Then we have DNS as we just covered to help us convert complicated public IP addresses to more suitable and rememberable domain names. Maybe we can think of this as the giant sorting office to make sure we get the right post. </p>
+<p>As I said each host requires these 4 things, if you have 1000 or 10,000 hosts then that is going to take you a very long time to determine each one of these individually. This is where DHCP comes in and allows you to determine a scope for your network and then this protocol will distribute to all available hosts in your network. </p>
+<p>Another example, you head into a coffee shop, grab a coffee and sit down with your laptop or your phone lets call that your host. You connect your host to the coffee shop wifi and you gain access to the internet, messages and mail start pinging through and you can navigate web pages and social media. When you connected to the coffee shop wifi your machine would have picked up a DHCP address either from a dedicated DHCP server or most likely from the router also handling DHCP. </p>
+<p><img alt="" src="../../../Images/week02/day02-01-08.png" /></p>
+<h3 id="subnetting">Subnetting</h3>
+<p>A subnet is a logical subdivision of an IP network.</p>
+<p>Subnets break large networks into smaller, more manageable networks that run more efficiently. </p>
+<p>Each subnet is a logical subdivision of the bigger network. Connected devices with enough subnet share common IP address identifier, enabling them to communicate with each other. </p>
+<p>Routers manage communication between subnets. </p>
+<p>The size of a subnet depends on the connectivity requirements and the network technology used. </p>
+<p>An organisation is responsible for determining its number and size of the subnets within the limits of address space
+available, and the details remain local to that organisation. Subnets can also be segmented into even smaller subnets for things like Point to Point links, or for sub networks supporting a few devices. </p>
+<p>Among other advantages, segmenting large
+networks into subnets enables IP address
+reallocation and relieves network congestion, streamlining, network communication and efficiency. </p>
+<p>Subnets can also improve network security.
+If a section of a network is compromised, it can be quarantined, making it difficult for bad actors to move around the larger network. </p>
+<p><img alt="" src="../../../Images/week02/day02-01-09.png" /></p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Vfiq-fH4Xqo">10 Protocols You Should Know</a></li>
+<li><a href="https://www.youtube.com/watch?v=E5bSumTAHZE">Network Protocols - ARP, FTP, SMTP, HTTP, SSL, TLS, HTTPS, DNS, DHCP</a></li>
+<li><a href="https://www.youtube.com/watch?v=hiKPPy584Mg">AWS Networking Fundamentals
+</a></li>
+</ul>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day01-02/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day01-02/" class="btn btn-sm btn-link">
+			The OSI Model - The 7 Layers
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-05-09 14:06:26 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>
