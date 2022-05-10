@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>Network Automation - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "Network Automation", url: "#_top", children: [
+						
+				{title: "Basics of network automation", url: "#_top", children: [
+				]},
+				{title: "Approach to Networking Automation", url: "#approach-to-networking-automation", children: [
+				]},
+				]},
+				{title: "Network Automation Tools", url: "#network-automation-tools", children: [
+						
+				{title: "Other tools to mention", url: "#_top", children: [
+				]},
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day02-01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day02-01/" class="btn btn-sm btn-link">
+			Network Protocols
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			
+
+			<h2 id="network-automation">Network Automation</h2>
+<h3 id="basics-of-network-automation">Basics of network automation</h3>
+<p>Primary drivers for Network Automation 
+- Achieve Agility 
+- Reduce Cost 
+- Eliminate Errors 
+- Ensure Compliance 
+- Centralised Management </p>
+<p>The automation adoption process is specific to each business. There's no one size fits all when it comes to deploying automation, the ability to identify and embrace the approach that works best for your organisation is critical in advancing towards maintaining or creating a more agile environment, the focus should always be on business value and end-user experience. (We said something similar right at the start in regards to the whole of DevOps and the culture change and the automated process that this brings)</p>
+<p>To break this down you would need to identify how the task or process that you're trying to automate is going to achieve and improve the end-user experience or business value whilst following a step-by-step systematic approach.</p>
+<p>"If you don't know where you are going, any road will take you there."</p>
+<p>Having a framework or design structure that you're trying to achieve knowing what your end goal is and then working step by step towards achieving that goal measuring the automation success at various stages based on the business outcomes.</p>
+<p>Build concepts modelled around existing applications there's no need to design the concepts around automation in a bubble because they need to be applied to your application, your service, your infrastructure, so begin to build the concepts and model them around your existing infrastructure, you're existing applications. </p>
+<h3 id="approach-to-networking-automation">Approach to Networking Automation</h3>
+<p>We should identify the tasks and perform a discovery on network change requests so that you have the most common issues and problems to automate a solution to. </p>
+<ul>
+<li>Make a list of all the change requests and workflows that are currently being addressed manually. </li>
+<li>Determine the most common, time-consuming and error-prone activities. </li>
+<li>Prioritise the requests by taking a business-driven approach. </li>
+<li>This is the framework for building an automation process, what must be automated and what must not. </li>
+</ul>
+<p>We should then divide tasks and analyse how different network functions work and interact with each other. </p>
+<ul>
+<li>Infrastructure/Network team receives change tickets at multiple layers to deploy applications. </li>
+<li>Based on Network services, divide them into different areas and understand how they interact with each other. <ul>
+<li>Application Optimisation </li>
+<li>ADC (Application Delivery Controller)</li>
+<li>Firewall </li>
+<li>DDI (DNS, DHCP, IPAM etc)</li>
+<li>Routing </li>
+<li>Others</li>
+</ul>
+</li>
+<li>Identify various dependencies to address business and cultural differences and bring in cross-team collaboration. </li>
+</ul>
+<p>Reusable policies, define and simplify reusable service tasks, processes and input/outputs. </p>
+<ul>
+<li>Define offerings for various services, processes and input/outputs. </li>
+<li>Simplifying the deployment process will reduce the time to market for both new and existing workloads. </li>
+<li>Once you have a standard process, it can be sequenced and aligned to individual requests for a multi-threaded approach and delivery. </li>
+</ul>
+<p>Combine the policies with business-specific activities. How does implementing this policy help the business? Saves time? Saves Money? Provides better business outcome? </p>
+<ul>
+<li>Ensure that service tasks are interoperable. </li>
+<li>Associate the incremental service tasks so that they align to create business services. </li>
+<li>Allow for the flexibility to associate and re-associate service tasks on demand. </li>
+<li>Deploy Self-Service capabilities and pave the way for improved operational efficiency. </li>
+<li>Allow for the multiple technology skillsets to continue to contribute with oversight and compliance. </li>
+</ul>
+<p><strong>Iterate</strong> on the policies and process, adding and improving while maintaining availability and service. </p>
+<ul>
+<li>Start small by automating existing tasks. </li>
+<li>Get familiar with the automation process, so that you can identify other areas that can benefit from automation. </li>
+<li>iterate your automation initiatives, adding agility incrementally while maintaining the required availability. </li>
+<li>Taking an incremental approach paves the way for success! </li>
+</ul>
+<p>Orchestrate the network service!</p>
+<ul>
+<li>Automation of the deployment process is required to deliver applications rapidly. </li>
+<li>Creating an agile service environment requires different elements to be managed across technology skillsets. </li>
+<li>Prepare for an end to end orchestration that provides for control over automation and the order of deployments. </li>
+</ul>
+<h2 id="network-automation-tools">Network Automation Tools</h2>
+<p>The good news here is that for the most part, the tools we use here for Network automation are generally the same that we will use for other areas of automation or what we have already covered so far or what we will cover in future sessions. </p>
+<p>Operating System - As I have throughout this challenge, I am focusing on doing most of my learning with a Linux OS, those reasons were given in the Linux section but almost all of the tooling that we will touch albeit cross-OS platform maybe today they all started as Linux based applications or tools, to begin with. </p>
+<p>Integrated Development Environment (IDE) - Again not much to say here other than throughout I would suggest Visual Studio Code as your IDE, based on the extensive plugins that are available for so many different languages. </p>
+<p>Configuration Management - We have not got to the Configuration management section yet, but it is very clear that Ansible is a favourite in this area for managing and automating configurations. Ansible is written in Python but you do not need to know Python. </p>
+<ul>
+<li>Agentless </li>
+<li>Only requires SSH</li>
+<li>Large Support Community </li>
+<li>Lots of Network Modules</li>
+<li>Push only model </li>
+<li>Configured with YAML </li>
+<li>Open Source!  </li>
+</ul>
+<p><a href="https://docs.ansible.com/ansible/2.9/modules/list_of_network_modules.html">Link to Ansible Network Modules</a></p>
+<p>We will also touch on <strong>Ansible Tower</strong> in the configuration management section, see this as the GUI front end for Ansible. </p>
+<p>CI/CD - Again we will cover more about the concepts and tooling around this but it's important to at least mention here as this spans not only networking but all provisioning of service and platform. </p>
+<p>In particular, Jenkins provides or seems to be a popular tool for Network Automation.</p>
+<ul>
+<li>Monitors git repository for changes and then initiates them. </li>
+</ul>
+<p>Version Control - Again something we will dive deeper into later on. </p>
+<ul>
+<li>Git provides version control of your code on your local device - Cross-Platform</li>
+<li>GitHub, GitLab, BitBucket etc are online websites where you define your repositories and upload your code. </li>
+</ul>
+<p>Language | Scripting - Something we have not covered here is Python as a language, I decided to dive into Go instead as the programming language based on my circumstances, I would say that it was a close call between Golang and Python and Python it seems to be the winner for Network Automation. </p>
+<ul>
+<li>Nornir is something to mention here, an automation framework written in Python. This seems to take the role of Ansible but specifically around Network Automation. <a href="https://nornir.readthedocs.io/en/latest/">Nornir documentation</a> </li>
+</ul>
+<p>Analyse APIs - Postman is a great tool for analysing RESTful APIs. Helps to build, test and modify APIs.</p>
+<ul>
+<li>POST &gt;&gt;&gt; To create resources objects.</li>
+<li>GET  &gt;&gt;&gt; To retrieve a resources.</li>
+<li>PUT  &gt;&gt;&gt; To create or replace the resources.</li>
+<li>PATCH &gt;&gt;&gt; To create or update the resources object.</li>
+<li>Delete &gt;&gt;&gt; To delete a resources</li>
+</ul>
+<p><a href="https://www.postman.com/downloads/">Postman tool Download</a></p>
+<h3 id="other-tools-to-mention">Other tools to mention</h3>
+<p><a href="https://www.cisco.com/c/en/us/products/cloud-systems-management/network-services-orchestrator/index.html">Cisco NSO (Network Services Orchestrator)</a></p>
+<p><a href="https://netyce.com/">NetYCE - Simplify Network Automation</a></p>
+<p><a href="https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/">Network Test Automation</a></p>
+<p>Over the next 3 days, I am planning to get more hands-on around some of the things we have covered and put some work in around Python and Network automation. </p>
+<p>We have nowhere near covered all of the networking topics so far but wanted to make this broad enough to follow along and still keep learning from the resources I am adding below. </p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=KhiJ7Fu9kKA&amp;list=WL&amp;index=122&amp;t=89s">3 Necessary Skills for Network Automation</a></li>
+<li><a href="https://www.youtube.com/watch?v=IPvYjXCsTg8">Computer Networking full course</a></li>
+<li><a href="http://www.practicalnetworking.net/">Practical Networking</a></li>
+<li><a href="https://www.youtube.com/watch?v=xKPzLplPECU&amp;list=WL&amp;index=126">Python Network Automation</a></li>
+</ul>
+<p>See you in the <a href="../../../home/">Next Section</a> 🚧</p>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day02-01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day02-01/" class="btn btn-sm btn-link">
+			Network Protocols
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-05-10 20:24:48 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>
