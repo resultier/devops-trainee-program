@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		
+		<link rel="shortcut icon" href="../../../img/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>Day04 01 - #DevopsTraineeProgram</title>
+		<link href="../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome-5.12.2-all.min.css" rel="stylesheet">
+		<link href="../../../css/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/highlight-github.css">
+		<script src="../../../bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/highlight.pack.js"></script>
+		
+		<script>
+			var base_url = '../../..';
+			var home_url = '../../../home';
+			var is_outer_page = false;
+			
+			var pageToc = [
+				{title: "LAB: Analyzing Network Traffic on a Linux Host", url: "#_top", children: [
+						
+				{title: "Note:", url: "#_top", children: [
+				]},
+				{title: "Learning Objectives", url: "#learning-objectives", children: [
+				]},
+				]},
+				{title: "Resources", url: "#resources", children: [
+				]},
+			];
+
+		</script>
+		<script src="../../../js/base.js"></script> 
+	</head>
+
+	<body class="inner-page">
+		
+
+		<div class="container-fluid wm-page-content">
+			<a name="_top" aria-hidden="true"></a>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day03-01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day03-01/" class="btn btn-sm btn-link">
+			Network Automation
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			
+
+			<hr />
+<p>title: 'LAB: Analyzing Network Traffic on a Linux Host'
+published: false
+description: DevOpsTraineeProgram - LAB: Analyzing Network Traffic on a Linux Host
+tags: "devops, DevOpsTraineeProgram, learning"
+cover_image: null
+canonical_url: null
+id: 1048735</p>
+<hr />
+<h2 id="lab-analyzing-network-traffic-on-a-linux-host">LAB: Analyzing Network Traffic on a Linux Host</h2>
+<p><img alt="" src="../../../Images/week02/day04-01-01.png" /></p>
+<p>In this scenario, you’re a linux administrator for a small company and have been tasked with analyzing the network traffic and availability on your data center.</p>
+<p>The first thing you need to do, is to log into server 3 and scan for open ports on server 1 and server 2 using the nmap command. Once the open sockets have been discovered, you will need to login into your server 1 and server 2 to further investigate the services that are running on these ports. This includes using the ss command to view process names and IDs and using the lsof commands, to view the files that have been opened by the services, and then save your finginds to files on the host.</p>
+<p>Lastly on server 1, you will need to perform a packet capture, for the 10.0.3.20 interface, and save it to a file for your records. You can store the contents to a file called in the /root directory.</p>
+<p>This is what will do for this introduction video and hope you guys have a lot of fun on this one and good luck.</p>
+<h4 id="note">Note:</h4>
+<ul>
+<li>All tasks should be performed as the root user.</li>
+<li>All the utilities needed have been installed.</li>
+<li>These servers accesses and login will be provided once requested through slack.</li>
+</ul>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<h4 id="scan-for-open-ports-on-server-1-and-server-2">Scan for Open Ports on Server 1 and Server 2</h4>
+<ul>
+<li>On Server 3, use the nmap command to scan for open TCP ports on Server 1 and Server 2.</li>
+<li>On Server 3, use the nmap command to scan for open UDP ports on Server 1 and Server 2.</li>
+<li>On Server 3, use the nmap command to scan for open TCP ports and provide OS and version information on Server 1 and Server 2.</li>
+<li>On Server 3, use the nmap command to scan for open UDP ports and provide OS and version information on Server 1.</li>
+</ul>
+<h4 id="analyze-the-listening-sockets-on-server-1-and-server-2">Analyze the Listening Sockets on Server 1 and Server 2</h4>
+<ul>
+<li>On Server 1, use the ss command to view open TCP and UDP sockets that were discovered by the nmap command.</li>
+<li>
+<p>On Server 1, view the open files for each service discovered by the nmap command and record the totals to a file (the file should be named after the service that the count is for).</p>
+</li>
+<li>
+<p>On Server 2, use the ss command to view open TCP sockets that were discovered by the nmap command.</p>
+</li>
+<li>On Server 2, view the open files for each service discovered by the nmap command and record the totals to a file.</li>
+</ul>
+<h4 id="perform-a-packet-capture-of-the-100320-interface-on-server-1">Perform a Packet Capture of the 10.0.3.20 Interface on Server 1</h4>
+<ul>
+<li>On Server 1, determine which interface has the 10.0.3.20 address and list the interfaces available for use with the <code>tcpdump</code> command.</li>
+<li>On Server 1, use the <code>tcpdump</code> command to record 5 packets from the 10.0.3.20 interface and save it to a file called 10-0-3-20.pcap. Then, view its contents.</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=7bsQP9sKHrs">Analyzing tcpdump data</a></li>
+<li><a href="https://www.youtube.com/watch?v=4t4kBkMsDbQ">Nmap Tutorial to find Network Vulnerabilities</a></li>
+</ul>
+
+			<br>
+			
+
+
+
+
+
+
+<div class="row pt-2 pb-4">
+	<div class="col-sm text-center text-sm-left">
+		<a href="../day03-01/" class="btn btn-sm btn-outline-dark">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			Previous
+		</a>
+		<a href="../day03-01/" class="btn btn-sm btn-link">
+			Network Automation
+		</a>
+	</div>
+	
+
+	
+</div>
+
+			<br>
+		</div>
+
+		<footer class="container-fluid wm-page-content text-center small">
+			<details>
+				<summary>
+					Documentation built with <a href="http://www.mkdocs.org/" target="_blank">MkDocs</a> using  <a href="https://github.com/Siphalor/mkdocs-custommill" target="_blank">CustomMill</a>.
+				</summary>
+				<h6 class="mt-2">Additional Licenses</h6>
+				<ul><li>
+						CustomMill is based on the <a href="https://github.com/gristlabs/mkdocs-windmill" target="_blank">Windmill</a> theme by Grist Labs, licensed under the <a href="https://github.com/gristlabs/mkdocs-windmill/blob/master/LICENSE" target="_blank">MIT License</a>
+					</li>
+					<li>
+						CustomMill includes <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> version 5.1.3. This is available under the <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT License</a>.
+					</li>
+					<li>
+						Syntax highlighting is implemented via <a href="https://highlightjs.org" target="_blank">highlight.js</a> licensed under the BSD 3-Clause License and the included github styling made by Vasily Polovnyov.
+					</li>
+					<li>
+						Icons on this site are from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a> which is licensed under the <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome Free License</a>.
+					</li></ul>
+				<p>Built at 2022-05-12 16:49:29 UTC</p>
+			</details>
+		</footer>
+
+		
+	</body>
+</html>
